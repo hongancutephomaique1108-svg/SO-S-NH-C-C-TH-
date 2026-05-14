@@ -1,0 +1,2052 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>English Tenses — Master Guide v2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1814;
+    --paper: #faf9f6;
+    --warm: #f5f0e8;
+    --accent1: #e85d26;
+    --accent2: #2563c8;
+    --accent3: #0e9e68;
+    --accent4: #9333c8;
+    --accent5: #c8334a;
+    --accent6: #b87300;
+    --muted: #6b6760;
+    --border: #ddd8ce;
+    --real-gold: #d4a017;
+    --polite-teal: #0891b2;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    min-height: 100vh;
+  }
+
+  /* ── HEADER ─────────────────────────────────── */
+  .hero {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 56px 48px 48px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: repeating-linear-gradient(
+      -45deg, transparent, transparent 40px,
+      rgba(255,255,255,0.02) 40px, rgba(255,255,255,0.02) 41px
+    );
+  }
+  .hero-tag {
+    display: inline-block;
+    font-size: 11px; font-weight: 600; letter-spacing: .15em;
+    text-transform: uppercase;
+    background: var(--accent1);
+    color: #fff;
+    padding: 4px 14px; border-radius: 2px;
+    margin-bottom: 20px;
+  }
+  .hero h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(36px, 6vw, 72px);
+    font-weight: 800;
+    line-height: 1.0;
+    letter-spacing: -.02em;
+    margin-bottom: 16px;
+  }
+  .hero h1 span { color: var(--accent1); }
+  .hero p { font-size: 16px; color: rgba(255,255,255,.55); max-width: 560px; line-height: 1.6; }
+  .hero-pills {
+    display: flex; flex-wrap: wrap; gap: 8px;
+    margin-top: 28px;
+  }
+  .pill {
+    padding: 6px 14px; border-radius: 20px;
+    font-size: 12px; font-weight: 500;
+    border: 1px solid rgba(255,255,255,.15);
+    color: rgba(255,255,255,.7);
+  }
+  .hero-version {
+    position: absolute; top: 24px; right: 36px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; color: rgba(255,255,255,.25);
+  }
+
+  /* ── NAVIGATION ─────────────────────────────── */
+  .nav-bar {
+    background: #fff;
+    border-bottom: 1px solid var(--border);
+    padding: 0 48px;
+    display: flex; gap: 0;
+    overflow-x: auto;
+    position: sticky; top: 0; z-index: 100;
+  }
+  .nav-bar a {
+    text-decoration: none;
+    font-size: 13px; font-weight: 500;
+    color: var(--muted);
+    padding: 14px 18px;
+    border-bottom: 2.5px solid transparent;
+    white-space: nowrap;
+    transition: all .2s;
+  }
+  .nav-bar a:hover { color: var(--ink); border-bottom-color: var(--accent1); }
+  .nav-bar a.nav-special { color: var(--real-gold); }
+  .nav-bar a.nav-special:hover { border-bottom-color: var(--real-gold); }
+
+  /* ── SECTION WRAPPER ─────────────────────────── */
+  .page { max-width: 1080px; margin: 0 auto; padding: 56px 48px; }
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 11px; font-weight: 700; letter-spacing: .15em;
+    text-transform: uppercase; color: var(--muted);
+    margin-bottom: 32px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .section-title::after { content:''; flex:1; height:1px; background: var(--border); }
+
+  /* ── PAIR CARD ───────────────────────────────── */
+  .pair-section { margin-bottom: 64px; }
+  .pair-header {
+    display: flex; align-items: center; gap: 16px;
+    margin-bottom: 24px; flex-wrap: wrap;
+  }
+  .pair-badge {
+    font-family: 'Syne', sans-serif;
+    font-size: 11px; font-weight: 700; letter-spacing: .1em;
+    text-transform: uppercase;
+    padding: 5px 14px; border-radius: 2px;
+  }
+  .pair-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 22px; font-weight: 800;
+  }
+
+  .tense-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px; }
+
+  .tense-card {
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+  .tc-head {
+    padding: 18px 22px 14px;
+    display: flex; align-items: flex-start; gap: 14px;
+  }
+  .tc-icon {
+    width: 40px; height: 40px; border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; flex-shrink: 0;
+  }
+  .tc-name { font-family: 'Syne', sans-serif; font-size: 16px; font-weight: 800; }
+  .tc-viet { font-size: 12px; color: var(--muted); margin-top: 2px; }
+
+  .tc-body { padding: 0 22px 20px; }
+
+  .formula-box {
+    display: flex; align-items: center; gap: 8px;
+    background: rgba(0,0,0,0.04);
+    border-radius: 8px;
+    padding: 10px 14px;
+    margin-bottom: 14px;
+    flex-wrap: wrap;
+  }
+  .f-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin-right: 4px; }
+  .formula-box code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px; font-weight: 600;
+  }
+
+  .signal-row { margin-bottom: 14px; }
+  .signal-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin-bottom: 6px; }
+  .signals { display: flex; flex-wrap: wrap; gap: 6px; }
+  .signal-chip {
+    font-size: 11px; font-weight: 500;
+    font-family: 'JetBrains Mono', monospace;
+    padding: 3px 9px; border-radius: 4px;
+    border: 1px solid;
+  }
+
+  .usage-list { list-style: none; }
+  .usage-list li {
+    font-size: 13px; line-height: 1.55;
+    padding: 4px 0 4px 18px;
+    position: relative;
+    color: #333;
+  }
+  .usage-list li::before {
+    content: '→';
+    position: absolute; left: 0;
+    font-weight: 600;
+  }
+
+  .example-box {
+    margin-top: 12px;
+    border-left: 3px solid;
+    padding: 8px 12px;
+    border-radius: 0 6px 6px 0;
+    background: rgba(0,0,0,.03);
+  }
+  .example-box p { font-size: 13px; font-style: italic; line-height: 1.6; color: #444; }
+  .example-box .ex-label { font-style: normal; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin-bottom: 4px; }
+
+  /* ── CONTRAST TABLE ──────────────────────────── */
+  .contrast-box {
+    background: var(--ink);
+    color: var(--paper);
+    border-radius: 12px;
+    padding: 24px;
+    margin-top: 4px;
+  }
+  .contrast-box h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 13px; font-weight: 700; letter-spacing: .1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.5);
+    margin-bottom: 16px;
+  }
+  .contrast-rows { display: grid; gap: 10px; }
+  .contrast-row {
+    display: grid; grid-template-columns: 1fr auto 1fr;
+    gap: 12px; align-items: start;
+  }
+  .cr-left { text-align: right; }
+  .cr-right { text-align: left; }
+  .cr-vs {
+    font-family: 'Syne', sans-serif;
+    font-size: 11px; font-weight: 700;
+    color: rgba(255,255,255,.35);
+    padding-top: 2px;
+  }
+  .cr-left p, .cr-right p {
+    font-size: 13px; font-style: italic; line-height: 1.5;
+    color: rgba(255,255,255,.85);
+  }
+  .cr-left small, .cr-right small {
+    display: block; font-size: 11px; font-style: normal;
+    margin-top: 3px; color: rgba(255,255,255,.4);
+  }
+
+  /* ── TIMELINE VIZ ────────────────────────────── */
+  .timeline-wrap {
+    background: var(--warm);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 16px;
+  }
+  .tl-title { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); margin-bottom: 16px; }
+
+  /* ── TRICK BOX ───────────────────────────────── */
+  .trick-strip {
+    background: #fff8ed;
+    border: 1px solid #f5dfa8;
+    border-left: 4px solid var(--accent6);
+    border-radius: 0 10px 10px 0;
+    padding: 14px 18px;
+    margin-top: 14px;
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .trick-icon { font-size: 20px; flex-shrink: 0; margin-top: 1px; }
+  .trick-text { font-size: 13px; line-height: 1.6; color: #5a3d00; }
+  .trick-text strong { font-weight: 600; }
+
+  /* ── MASTER CHEAT ───────────────────────────── */
+  .cheat-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 12px;
+  }
+  .cheat-card {
+    border-radius: 10px;
+    padding: 16px 18px;
+    border: 1px solid var(--border);
+  }
+  .cc-name { font-family: 'Syne', sans-serif; font-size: 14px; font-weight: 800; margin-bottom: 6px; }
+  .cc-form { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--muted); margin-bottom: 8px; }
+  .cc-when { font-size: 12px; line-height: 1.55; color: #444; }
+
+  /* ── QUESTION RADAR ──────────────────────────── */
+  .question-table { width: 100%; border-collapse: collapse; }
+  .question-table th {
+    font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .08em;
+    color: var(--muted); text-align: left;
+    padding: 8px 14px; border-bottom: 1px solid var(--border);
+  }
+  .question-table td {
+    font-size: 13px; padding: 10px 14px;
+    border-bottom: 1px solid rgba(0,0,0,.05);
+    vertical-align: top; line-height: 1.5;
+  }
+  .question-table tr:last-child td { border-bottom: none; }
+  .question-table tr:hover td { background: var(--warm); }
+
+  /* ═══════════════════════════════════════════════
+     ── ACTIVE QUIZ (Interactive Flashcards) ──────
+  ═══════════════════════════════════════════════ */
+  .quiz-section {
+    background: #0f172a;
+    border-radius: 16px;
+    padding: 32px;
+    margin-bottom: 0;
+  }
+  .quiz-header {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 24px; flex-wrap: wrap; gap: 12px;
+  }
+  .quiz-header h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: 20px; font-weight: 800; color: #fff;
+  }
+  .quiz-progress {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px; color: rgba(255,255,255,.4);
+    background: rgba(255,255,255,.08);
+    padding: 6px 14px; border-radius: 20px;
+  }
+  .quiz-score-badge {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px; color: #6ee7b7;
+    background: rgba(110,231,183,.1);
+    padding: 6px 14px; border-radius: 20px;
+  }
+  .quiz-card {
+    background: rgba(255,255,255,.05);
+    border: 1px solid rgba(255,255,255,.1);
+    border-radius: 12px;
+    padding: 28px;
+    text-align: center;
+    min-height: 180px;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    position: relative;
+    transition: all .3s;
+  }
+  .quiz-card.correct { border-color: #6ee7b7; background: rgba(110,231,183,.08); }
+  .quiz-card.wrong { border-color: #f87171; background: rgba(248,113,113,.08); }
+  .quiz-signal {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 22px; font-weight: 600;
+    color: #fff; margin-bottom: 10px;
+  }
+  .quiz-hint {
+    font-size: 14px; color: rgba(255,255,255,.5); line-height: 1.5; max-width: 420px;
+  }
+  .quiz-options {
+    display: grid; grid-template-columns: repeat(2, 1fr);
+    gap: 10px; margin-top: 20px;
+  }
+  .quiz-opt {
+    background: rgba(255,255,255,.07);
+    border: 1px solid rgba(255,255,255,.15);
+    border-radius: 8px;
+    padding: 10px 16px;
+    font-size: 13px; font-weight: 500;
+    color: rgba(255,255,255,.8);
+    cursor: pointer;
+    transition: all .2s;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .quiz-opt:hover { background: rgba(255,255,255,.12); border-color: rgba(255,255,255,.3); }
+  .quiz-opt.correct { background: rgba(110,231,183,.2); border-color: #6ee7b7; color: #6ee7b7; }
+  .quiz-opt.wrong { background: rgba(248,113,113,.2); border-color: #f87171; color: #f87171; }
+  .quiz-opt.reveal-correct { background: rgba(110,231,183,.2); border-color: #6ee7b7; color: #6ee7b7; }
+  .quiz-explain {
+    margin-top: 16px; display: none;
+    background: rgba(255,255,255,.07); border-radius: 8px;
+    padding: 14px 18px; text-align: left;
+    font-size: 13px; line-height: 1.6; color: rgba(255,255,255,.7);
+  }
+  .quiz-explain.show { display: block; }
+  .quiz-explain strong { color: #fff; }
+  .quiz-nav {
+    display: flex; align-items: center; justify-content: center;
+    gap: 12px; margin-top: 20px;
+  }
+  .quiz-btn {
+    background: rgba(255,255,255,.1);
+    border: 1px solid rgba(255,255,255,.2);
+    border-radius: 8px;
+    padding: 10px 22px;
+    font-size: 13px; font-weight: 600;
+    color: #fff; cursor: pointer;
+    transition: all .2s;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .quiz-btn:hover { background: rgba(255,255,255,.18); }
+  .quiz-btn.primary { background: var(--accent1); border-color: var(--accent1); }
+  .quiz-btn.primary:hover { background: #d44d18; }
+  .quiz-btn:disabled { opacity: .4; cursor: not-allowed; }
+  .quiz-result {
+    text-align: center; color: #fff;
+    display: none; padding: 20px 0;
+  }
+  .quiz-result.show { display: block; }
+  .quiz-result .result-score {
+    font-family: 'Syne', sans-serif;
+    font-size: 52px; font-weight: 800; color: #6ee7b7;
+    line-height: 1;
+  }
+  .quiz-result p { color: rgba(255,255,255,.6); margin-top: 8px; font-size: 15px; }
+
+  /* ═══════════════════════════════════════════════
+     ── REAL-LIFE RULE BREAKERS ───────────────────
+  ═══════════════════════════════════════════════ */
+  .rebel-section {
+    background: linear-gradient(135deg, #1a0a2e 0%, #0d1a1f 100%);
+    border-radius: 16px;
+    padding: 36px;
+    margin-bottom: 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .rebel-section::before {
+    content: '';
+    position: absolute; top: -60px; right: -60px;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(232,93,38,.15) 0%, transparent 70%);
+  }
+  .rebel-header {
+    display: flex; align-items: flex-start; gap: 16px;
+    margin-bottom: 28px;
+  }
+  .rebel-badge {
+    background: linear-gradient(135deg, #e85d26, #f59e0b);
+    border-radius: 8px;
+    width: 48px; height: 48px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px; flex-shrink: 0;
+  }
+  .rebel-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 22px; font-weight: 800; color: #fff;
+    margin-bottom: 4px;
+  }
+  .rebel-subtitle { font-size: 13px; color: rgba(255,255,255,.45); line-height: 1.5; }
+  .rebel-cards { display: grid; gap: 16px; }
+  .rebel-card {
+    background: rgba(255,255,255,.05);
+    border: 1px solid rgba(255,255,255,.1);
+    border-radius: 12px;
+    padding: 22px 26px;
+    display: grid; grid-template-columns: auto 1fr;
+    gap: 16px; align-items: start;
+  }
+  .rebel-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 28px; font-weight: 800;
+    color: rgba(232,93,38,.4);
+    line-height: 1;
+    min-width: 32px;
+  }
+  .rebel-brand {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(255,255,255,.08);
+    border-radius: 6px; padding: 6px 12px;
+    margin-bottom: 10px;
+  }
+  .rebel-brand-name {
+    font-family: 'Syne', sans-serif;
+    font-size: 15px; font-weight: 800; color: #fff;
+  }
+  .rebel-quote {
+    font-size: 20px; font-weight: 600; font-style: italic;
+    color: #fbbf24; margin-bottom: 10px; line-height: 1.3;
+  }
+  .rebel-rule {
+    font-size: 12px; font-weight: 600; text-transform: uppercase;
+    letter-spacing: .08em; color: rgba(255,255,255,.35);
+    margin-bottom: 8px;
+  }
+  .rebel-explanation {
+    font-size: 13px; color: rgba(255,255,255,.65); line-height: 1.65;
+  }
+  .rebel-explanation strong { color: rgba(255,255,255,.9); }
+  .rebel-verdict {
+    display: inline-block; margin-top: 10px;
+    background: rgba(110,231,183,.15); border: 1px solid rgba(110,231,183,.3);
+    color: #6ee7b7; border-radius: 6px; padding: 4px 12px;
+    font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .08em;
+  }
+
+  /* ═══════════════════════════════════════════════
+     ── POLITE PAST SECTION ───────────────────────
+  ═══════════════════════════════════════════════ */
+  .polite-section {
+    background: linear-gradient(135deg, #0c1f2e 0%, #0f2218 100%);
+    border-radius: 16px;
+    padding: 36px;
+    position: relative;
+    overflow: hidden;
+  }
+  .polite-section::before {
+    content: '';
+    position: absolute; bottom: -40px; left: -40px;
+    width: 180px; height: 180px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(8,145,178,.12) 0%, transparent 70%);
+  }
+  .polite-header {
+    display: flex; align-items: flex-start; gap: 16px;
+    margin-bottom: 28px;
+  }
+  .polite-badge-icon {
+    background: linear-gradient(135deg, #0891b2, #0e9e68);
+    border-radius: 8px;
+    width: 48px; height: 48px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px; flex-shrink: 0;
+  }
+  .polite-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 22px; font-weight: 800; color: #fff;
+    margin-bottom: 4px;
+  }
+  .polite-subtitle { font-size: 13px; color: rgba(255,255,255,.45); line-height: 1.5; }
+  .polite-scale {
+    display: flex; align-items: center; gap: 10px;
+    margin-bottom: 24px; flex-wrap: wrap;
+  }
+  .polite-level {
+    padding: 5px 14px; border-radius: 20px; font-size: 12px; font-weight: 600;
+  }
+  .polite-level.rude { background: rgba(248,113,113,.15); color: #f87171; border: 1px solid rgba(248,113,113,.3); }
+  .polite-level.neutral { background: rgba(251,191,36,.15); color: #fbbf24; border: 1px solid rgba(251,191,36,.3); }
+  .polite-level.polite { background: rgba(110,231,183,.15); color: #6ee7b7; border: 1px solid rgba(110,231,183,.3); }
+  .polite-level.verypolite { background: rgba(8,145,178,.2); color: #67e8f9; border: 1px solid rgba(8,145,178,.4); }
+  .polite-cards { display: grid; gap: 14px; }
+  .polite-card {
+    background: rgba(255,255,255,.04);
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 10px;
+    padding: 18px 22px;
+  }
+  .polite-scenario {
+    font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .1em;
+    color: rgba(255,255,255,.35); margin-bottom: 14px;
+  }
+  .polite-comparison { display: grid; gap: 10px; }
+  .polite-row {
+    display: grid; grid-template-columns: auto 1fr auto;
+    align-items: center; gap: 12px;
+  }
+  .polite-sent {
+    font-size: 14px; font-style: italic; color: rgba(255,255,255,.8); line-height: 1.4;
+  }
+  .polite-tag {
+    font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em;
+    padding: 3px 10px; border-radius: 4px; white-space: nowrap;
+  }
+  .tag-rude { background: rgba(248,113,113,.15); color: #f87171; border: 1px solid rgba(248,113,113,.25); }
+  .tag-ok { background: rgba(251,191,36,.12); color: #fbbf24; border: 1px solid rgba(251,191,36,.2); }
+  .tag-smooth { background: rgba(110,231,183,.12); color: #6ee7b7; border: 1px solid rgba(110,231,183,.2); }
+  .tag-pro { background: rgba(8,145,178,.15); color: #67e8f9; border: 1px solid rgba(8,145,178,.3); }
+  .polite-note {
+    font-size: 11px; color: rgba(255,255,255,.35); font-style: italic; grid-column: 2/3;
+    padding-left: 2px;
+  }
+  .polite-insight {
+    margin-top: 20px;
+    background: rgba(8,145,178,.1);
+    border: 1px solid rgba(8,145,178,.25);
+    border-radius: 8px; padding: 14px 18px;
+    font-size: 13px; color: rgba(255,255,255,.7); line-height: 1.6;
+  }
+  .polite-insight strong { color: #67e8f9; }
+
+  /* ── FOOTER ──────────────────────────────────── */
+  .footer {
+    background: var(--ink); color: rgba(255,255,255,.4);
+    text-align: center; padding: 32px;
+    font-size: 12px; letter-spacing: .05em;
+  }
+
+  /* ── RESPONSIVE ──────────────────────────────── */
+  @media (max-width: 700px) {
+    .hero, .page { padding: 32px 24px; }
+    .nav-bar { padding: 0 24px; }
+    .tense-grid { grid-template-columns: 1fr; }
+    .contrast-row { grid-template-columns: 1fr; text-align: left; }
+    .cr-left { text-align: left; }
+    .cr-vs { display: none; }
+    .quiz-options { grid-template-columns: 1fr; }
+    .rebel-card { grid-template-columns: 1fr; }
+    .polite-row { grid-template-columns: 1fr; gap: 4px; }
+    .polite-tag { align-self: flex-start; }
+  }
+
+  /* ── HIGHLIGHT ON SCROLL ─────────────────────── */
+  .pair-section { scroll-margin-top: 56px; }
+</style>
+</head>
+<body>
+
+<!-- ══ HERO ══════════════════════════════════════ -->
+<header class="hero">
+  <div class="hero-version">v2.0 · Enhanced Edition</div>
+  <div class="hero-tag">Grammar Master Guide</div>
+  <h1>English<br><span>Tenses</span><br>Decoded.</h1>
+  <p>Phân biệt rõ ràng · Công thức gọn · So sánh thực chiến · Tiếng Anh đời thực · Active Quiz</p>
+  <div class="hero-pills">
+    <span class="pill">Present Simple</span>
+    <span class="pill">Present Continuous</span>
+    <span class="pill">Past Simple</span>
+    <span class="pill">Present Perfect</span>
+    <span class="pill">Past Continuous</span>
+    <span class="pill">Past Perfect</span>
+    <span class="pill">Future Simple</span>
+    <span class="pill">Future Continuous</span>
+    <span class="pill">Future Perfect</span>
+    <span class="pill">Past Perfect Continuous</span>
+  </div>
+</header>
+
+<!-- ══ NAV ════════════════════════════════════════ -->
+<nav class="nav-bar">
+  <a href="#pair1">HTĐ vs HTTD</a>
+  <a href="#pair2">QKĐ vs HTHT</a>
+  <a href="#pair3">QKTD vs QKHT</a>
+  <a href="#pair4">HTĐ vs TLĐ vs TLTD</a>
+  <a href="#advanced">Thì Nâng Cao</a>
+  <a href="#cheat">Cheat Sheet</a>
+  <a href="#trap">Bẫy thường gặp</a>
+  <a href="#rebel" class="nav-special">🔥 Phá Luật</a>
+  <a href="#polite" class="nav-special">🎩 Lịch Sự</a>
+  <a href="#quiz" class="nav-special">🧪 Quiz</a>
+</nav>
+
+<main class="page">
+
+<!-- ══════════════════════════════════════════════
+     PAIR 1 · Present Simple vs Present Continuous
+════════════════════════════════════════════════ -->
+<div id="pair1" class="pair-section">
+  <div class="section-title">Cặp 01</div>
+  <div class="pair-header">
+    <span class="pair-badge" style="background:#fff0eb;color:var(--accent1);">HTĐ</span>
+    <span class="pair-title">Present Simple</span>
+    <span style="color:var(--muted);font-size:20px;font-weight:300;">vs</span>
+    <span class="pair-badge" style="background:#ebf3ff;color:var(--accent2);">HTTD</span>
+    <span class="pair-title">Present Continuous</span>
+  </div>
+
+  <div class="tense-grid">
+
+    <!-- Present Simple -->
+    <div class="tense-card">
+      <div class="tc-head" style="background:#fff7f5;">
+        <div class="tc-icon" style="background:#ffe8e0;">🔁</div>
+        <div>
+          <div class="tc-name" style="color:var(--accent1);">Present Simple</div>
+          <div class="tc-viet">Hiện tại đơn</div>
+        </div>
+      </div>
+      <div class="tc-body">
+        <div class="formula-box">
+          <span class="f-label">Formula</span>
+          <code style="color:var(--accent1);">S + V(s/es) / do-does not + V</code>
+        </div>
+        <div class="signal-row">
+          <div class="signal-label">Signal words</div>
+          <div class="signals">
+            <span class="signal-chip" style="background:#fff0eb;border-color:#f5c4a8;color:var(--accent1);">always</span>
+            <span class="signal-chip" style="background:#fff0eb;border-color:#f5c4a8;color:var(--accent1);">usually</span>
+            <span class="signal-chip" style="background:#fff0eb;border-color:#f5c4a8;color:var(--accent1);">often</span>
+            <span class="signal-chip" style="background:#fff0eb;border-color:#f5c4a8;color:var(--accent1);">every day/week</span>
+            <span class="signal-chip" style="background:#fff0eb;border-color:#f5c4a8;color:var(--accent1);">never</span>
+            <span class="signal-chip" style="background:#fff0eb;border-color:#f5c4a8;color:var(--accent1);">sometimes</span>
+            <span class="signal-chip" style="background:#fff0eb;border-color:#f5c4a8;color:var(--accent1);">seldom / rarely</span>
+          </div>
+        </div>
+        <div class="signal-label" style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:6px;">Usage</div>
+        <ul class="usage-list">
+          <li>Thói quen, hành động lặp đi lặp lại</li>
+          <li>Sự thật hiển nhiên, chân lý khoa học</li>
+          <li>Lịch trình cố định (tàu, xe, máy bay)</li>
+          <li>Cảm xúc, trạng thái tĩnh — stative verbs (love, know, believe)</li>
+          <li>Câu điều kiện loại 1 mệnh đề IF: <em>If it rains, I stay home.</em></li>
+        </ul>
+        <div class="example-box" style="border-color:var(--accent1);">
+          <div class="ex-label">Examples</div>
+          <p>She <strong>drinks</strong> coffee every morning.<br>The sun <strong>rises</strong> in the east.<br>The train <strong>leaves</strong> at 8 AM.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Present Continuous -->
+    <div class="tense-card">
+      <div class="tc-head" style="background:#f0f6ff;">
+        <div class="tc-icon" style="background:#dbeafe;">⚡</div>
+        <div>
+          <div class="tc-name" style="color:var(--accent2);">Present Continuous</div>
+          <div class="tc-viet">Hiện tại tiếp diễn</div>
+        </div>
+      </div>
+      <div class="tc-body">
+        <div class="formula-box">
+          <span class="f-label">Formula</span>
+          <code style="color:var(--accent2);">S + am/is/are + V-ing</code>
+        </div>
+        <div class="signal-row">
+          <div class="signal-label">Signal words</div>
+          <div class="signals">
+            <span class="signal-chip" style="background:#ebf3ff;border-color:#bfdbfe;color:var(--accent2);">now</span>
+            <span class="signal-chip" style="background:#ebf3ff;border-color:#bfdbfe;color:var(--accent2);">right now</span>
+            <span class="signal-chip" style="background:#ebf3ff;border-color:#bfdbfe;color:var(--accent2);">at the moment</span>
+            <span class="signal-chip" style="background:#ebf3ff;border-color:#bfdbfe;color:var(--accent2);">currently</span>
+            <span class="signal-chip" style="background:#ebf3ff;border-color:#bfdbfe;color:var(--accent2);">Look! Listen!</span>
+            <span class="signal-chip" style="background:#ebf3ff;border-color:#bfdbfe;color:var(--accent2);">these days / this week</span>
+          </div>
+        </div>
+        <div class="signal-label" style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:6px;">Usage</div>
+        <ul class="usage-list">
+          <li>Đang xảy ra tại thời điểm nói</li>
+          <li>Xung quanh thời điểm nói (giai đoạn tạm thời)</li>
+          <li>Kế hoạch đã sắp xếp trong tương lai gần</li>
+          <li>Hành động gây khó chịu (<em>always + V-ing</em> = phàn nàn)</li>
+          <li>Xu hướng đang thay đổi: <em>The climate is getting warmer.</em></li>
+        </ul>
+        <div class="example-box" style="border-color:var(--accent2);">
+          <div class="ex-label">Examples</div>
+          <p>She <strong>is drinking</strong> coffee right now.<br>I <strong>am working</strong> from home this week.<br>They <strong>are meeting</strong> tomorrow at 3.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTRAST -->
+  <div class="contrast-box">
+    <h3>⚖ Phân biệt thực chiến — Same Subject, Different Meaning</h3>
+    <div class="contrast-rows">
+      <div class="contrast-row">
+        <div class="cr-left">
+          <p>She <u>works</u> at Google.</p>
+          <small style="color:#ef9f27">→ Công việc hiện tại, bình thường, mang tính vĩnh viễn</small>
+        </div>
+        <div class="cr-vs">VS</div>
+        <div class="cr-right">
+          <p>She <u>is working</u> at Google.</p>
+          <small style="color:#93c5fd">→ Tạm thời, có thể đang thực tập hoặc có thể nghỉ sớm</small>
+        </div>
+      </div>
+      <div class="contrast-row">
+        <div class="cr-left">
+          <p>I <u>think</u> he is right.</p>
+          <small style="color:#ef9f27">→ Ý kiến/suy nghĩ (stative — KHÔNG dùng -ing)</small>
+        </div>
+        <div class="cr-vs">VS</div>
+        <div class="cr-right">
+          <p>I <u>am thinking</u> about my future.</p>
+          <small style="color:#93c5fd">→ Đang cân nhắc, suy ngẫm (action sense → được dùng -ing)</small>
+        </div>
+      </div>
+      <div class="contrast-row">
+        <div class="cr-left">
+          <p>He <u>always loses</u> his keys.</p>
+          <small style="color:#ef9f27">→ Thói quen thực sự (neutral fact)</small>
+        </div>
+        <div class="cr-vs">VS</div>
+        <div class="cr-right">
+          <p>He <u>is always losing</u> his keys!</p>
+          <small style="color:#93c5fd">→ Phàn nàn về thói quen xấu (annoying habit)</small>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="trick-strip">
+    <div class="trick-icon">💡</div>
+    <div class="trick-text"><strong>Mẹo vàng — Stative vs Dynamic:</strong> Stative verbs (know, love, hate, want, need, believe, seem, own, understand, prefer, appear, belong, consist, contain, resemble) <strong>KHÔNG dùng được với -ing</strong> ở nghĩa trạng thái. Một số có 2 nghĩa: <em>I have a car</em> (sở hữu) vs <em>I am having lunch</em> (hành động).</div>
+  </div>
+
+  <div class="trick-strip" style="margin-top:10px;border-left-color:var(--accent5);">
+    <div class="trick-icon">🚨</div>
+    <div class="trick-text"><strong>Bẫy Động từ Trạng thái (Stative Verbs):</strong> Các động từ chỉ nhận thức, cảm giác, sở hữu (know, understand, want, need, love, hate, belong...) <strong>KHÔNG dùng ở dạng V-ing</strong> dù sự việc đang diễn ra.<br>
+    ✅ <em>I understand the lesson now.</em> <small style="color:#5a3d00;">(Không dùng: I am understanding)</small><br><br>
+    <strong>Cấu trúc Phàn nàn (Special):</strong> Thấy <strong>Always</strong> đừng vội chọn HTĐ. Nếu <strong>Always + HTTD</strong>, câu đó mang nghĩa <em>phàn nàn, bực tức</em>.<br>
+    👉 <em>He is always leaving his dirty socks on the floor!</em> <small style="color:#5a3d00;">(Anh ta lúc nào cũng vứt tất bẩn ra sàn — Thật bực mình!)</small></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════
+     PAIR 2 · Past Simple vs Present Perfect
+════════════════════════════════════════════════ -->
+<div id="pair2" class="pair-section">
+  <div class="section-title">Cặp 02</div>
+  <div class="pair-header">
+    <span class="pair-badge" style="background:#f5f0ff;color:var(--accent4);">QKĐ</span>
+    <span class="pair-title">Past Simple</span>
+    <span style="color:var(--muted);font-size:20px;font-weight:300;">vs</span>
+    <span class="pair-badge" style="background:#f0fff8;color:var(--accent3);">HTHT</span>
+    <span class="pair-title">Present Perfect</span>
+  </div>
+
+  <div class="tense-grid">
+    <!-- Past Simple -->
+    <div class="tense-card">
+      <div class="tc-head" style="background:#faf5ff;">
+        <div class="tc-icon" style="background:#ede9fe;">📌</div>
+        <div>
+          <div class="tc-name" style="color:var(--accent4);">Past Simple</div>
+          <div class="tc-viet">Quá khứ đơn</div>
+        </div>
+      </div>
+      <div class="tc-body">
+        <div class="formula-box">
+          <span class="f-label">Formula</span>
+          <code style="color:var(--accent4);">S + V2/ed / did not + V</code>
+        </div>
+        <div class="signal-row">
+          <div class="signal-label">Signal words</div>
+          <div class="signals">
+            <span class="signal-chip" style="background:#faf5ff;border-color:#ddd6fe;color:var(--accent4);">yesterday</span>
+            <span class="signal-chip" style="background:#faf5ff;border-color:#ddd6fe;color:var(--accent4);">ago</span>
+            <span class="signal-chip" style="background:#faf5ff;border-color:#ddd6fe;color:var(--accent4);">last night/year</span>
+            <span class="signal-chip" style="background:#faf5ff;border-color:#ddd6fe;color:var(--accent4);">in 2010</span>
+            <span class="signal-chip" style="background:#faf5ff;border-color:#ddd6fe;color:var(--accent4);">when</span>
+            <span class="signal-chip" style="background:#faf5ff;border-color:#ddd6fe;color:var(--accent4);">in the past</span>
+          </div>
+        </div>
+        <ul class="usage-list">
+          <li>Hành động xảy ra và kết thúc tại thời điểm xác định trong QK</li>
+          <li>Chuỗi sự kiện kế tiếp nhau trong QK</li>
+          <li>Thói quen trong QK (thường dùng kèm "used to")</li>
+          <li><strong>Key rule:</strong> Dùng Past Simple khi hành động đã chấm dứt hẳn và có mốc thời gian xác định (<em>yesterday, ago, last..., in 2010</em>).</li>
+          <li><strong>Công thức tư duy:</strong> QKĐ quan tâm đến <em>"việc đó xảy ra khi nào"</em>.</li>
+        </ul>
+        <div class="example-box" style="border-color:var(--accent4);">
+          <div class="ex-label">Examples</div>
+          <p>I <strong>visited</strong> Paris <u>last year</u>.<br>She <strong>called</strong> me <u>two hours ago</u>.<br>He <strong>worked</strong> at that company <u>in 2015</u>.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Present Perfect -->
+    <div class="tense-card">
+      <div class="tc-head" style="background:#f0fff8;">
+        <div class="tc-icon" style="background:#d1fae5;">🔗</div>
+        <div>
+          <div class="tc-name" style="color:var(--accent3);">Present Perfect</div>
+          <div class="tc-viet">Hiện tại hoàn thành</div>
+        </div>
+      </div>
+      <div class="tc-body">
+        <div class="formula-box">
+          <span class="f-label">Formula</span>
+          <code style="color:var(--accent3);">S + have/has + V3/ed</code>
+        </div>
+        <div class="signal-row">
+          <div class="signal-label">Signal words</div>
+          <div class="signals">
+            <span class="signal-chip" style="background:#f0fff8;border-color:#a7f3d0;color:var(--accent3);">already</span>
+            <span class="signal-chip" style="background:#f0fff8;border-color:#a7f3d0;color:var(--accent3);">just</span>
+            <span class="signal-chip" style="background:#f0fff8;border-color:#a7f3d0;color:var(--accent3);">yet</span>
+            <span class="signal-chip" style="background:#f0fff8;border-color:#a7f3d0;color:var(--accent3);">ever / never</span>
+            <span class="signal-chip" style="background:#f0fff8;border-color:#a7f3d0;color:var(--accent3);">since / for</span>
+            <span class="signal-chip" style="background:#f0fff8;border-color:#a7f3d0;color:var(--accent3);">recently / lately</span>
+            <span class="signal-chip" style="background:#f0fff8;border-color:#a7f3d0;color:var(--accent3);">so far / up to now</span>
+          </div>
+        </div>
+        <ul class="usage-list">
+          <li>Hành động QK có ảnh hưởng đến HT (kết quả vẫn còn)</li>
+          <li>Kinh nghiệm đã trải qua (không quan trọng khi nào)</li>
+          <li>Hành động bắt đầu từ QK, kéo dài đến HT (since/for)</li>
+          <li>Hành động vừa mới xảy ra (just, recently)</li>
+          <li><strong>Key rule:</strong> Dùng Present Perfect khi hành động có kết quả/liên hệ tới hiện tại hoặc không có thời gian xác định cụ thể.</li>
+          <li><strong>Công thức tư duy:</strong> HTHT quan tâm đến <em>"việc đó đã xảy ra chưa"</em>, không quan tâm khi nào.</li>
+        </ul>
+        <div class="example-box" style="border-color:var(--accent3);">
+          <div class="ex-label">Examples</div>
+          <p>I <strong>have visited</strong> Paris. <small style="color:var(--muted)">(kinh nghiệm, không nói khi nào)</small><br>She <strong>has just called</strong> me.<br>He <strong>has worked</strong> here <u>for</u> 5 years.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="contrast-box">
+    <h3>⚖ Key Test: Có mốc thời gian cụ thể không?</h3>
+    <div class="contrast-rows">
+      <div class="contrast-row">
+        <div class="cr-left">
+          <p>I <u>saw</u> that movie <u>last week</u>.</p>
+          <small style="color:#ef9f27">→ "last week" = mốc cụ thể → Past Simple</small>
+        </div>
+        <div class="cr-vs">VS</div>
+        <div class="cr-right">
+          <p>I <u>have seen</u> that movie.</p>
+          <small style="color:#93c5fd">→ Không nói khi nào, chỉ nói kinh nghiệm → Present Perfect</small>
+        </div>
+      </div>
+      <div class="contrast-row">
+        <div class="cr-left">
+          <p><u>Did</u> you finish the report?</p>
+          <small style="color:#ef9f27">→ Hỏi về sự kiện cụ thể đã xảy ra (deadline đã qua)</small>
+        </div>
+        <div class="cr-vs">VS</div>
+        <div class="cr-right">
+          <p><u>Have</u> you finished the report?</p>
+          <small style="color:#93c5fd">→ Quan tâm đến kết quả HT, cần biết ngay bây giờ</small>
+        </div>
+      </div>
+      <div class="contrast-row">
+        <div class="cr-left">
+          <p>Shakespeare <u>wrote</u> Hamlet.</p>
+          <small style="color:#ef9f27">→ Người đã mất, sự kiện hoàn toàn thuộc QK → Past Simple</small>
+        </div>
+        <div class="cr-vs">VS</div>
+        <div class="cr-right">
+          <p>This author <u>has written</u> 3 novels.</p>
+          <small style="color:#93c5fd">→ Còn sống, thành tích còn có thể tăng → Present Perfect</small>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="trick-strip">
+    <div class="trick-icon">💡</div>
+    <div class="trick-text"><strong>Quy tắc vàng:</strong> Thấy <strong>yesterday / ago / last … / in [năm cụ thể] / when</strong> → Past Simple ngay lập tức. Thấy <strong>since / for / just / already / yet / ever / never / recently / so far / up to now</strong> → Present Perfect. Hai nhóm này KHÔNG thể dùng chung thì!<br><br><strong>Thêm:</strong> British English dùng PP nhiều hơn: <em>"I've just eaten"</em> vs American English có thể dùng PS: <em>"I just ate"</em>.</div>
+  </div>
+
+  <div class="trick-strip" style="margin-top:10px;border-left-color:var(--accent4);">
+    <div class="trick-icon">🏆</div>
+    <div class="trick-text"><strong>PRO-TIP — Bí kíp ăn điểm tuyệt đối:</strong><br>
+    <strong>Quy tắc "Người chết và Người sống":</strong> Khi nói về tác phẩm của một người đã khuất, dùng <strong>QKĐ</strong> (vì hành động không thể tiếp diễn). Nếu tác giả còn sống, dùng <strong>HTHT</strong>.<br>
+    👉 <em>Shakespeare wrote Hamlet.</em> <small style="color:#5a3d00;">(Ông ấy không thể viết thêm nữa)</small><br>
+    👉 <em>J.K. Rowling has written many books.</em> <small style="color:#5a3d00;">(Bà ấy vẫn đang sống và có thể viết tiếp)</small><br><br>
+    <strong>Mẹo làm bài siêu tốc:</strong> Có mốc thời gian cụ thể trong quá khứ → <strong>QKĐ</strong>. Có <strong>Since</strong> (từ khi) / <strong>For</strong> (trong khoảng) → <strong>HTHT</strong>.</div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════
+     PAIR 3 · Past Continuous vs Past Perfect
+════════════════════════════════════════════════ -->
+<div id="pair3" class="pair-section">
+  <div class="section-title">Cặp 03</div>
+  <div class="pair-header">
+    <span class="pair-badge" style="background:#fff5eb;color:var(--accent6);">QKTD</span>
+    <span class="pair-title">Past Continuous</span>
+    <span style="color:var(--muted);font-size:20px;font-weight:300;">vs</span>
+    <span class="pair-badge" style="background:#fff0f3;color:var(--accent5);">QKHT</span>
+    <span class="pair-title">Past Perfect</span>
+  </div>
+
+  <div class="tense-grid">
+    <!-- Past Continuous -->
+    <div class="tense-card">
+      <div class="tc-head" style="background:#fffbf5;">
+        <div class="tc-icon" style="background:#fef3c7;">🌊</div>
+        <div>
+          <div class="tc-name" style="color:var(--accent6);">Past Continuous</div>
+          <div class="tc-viet">Quá khứ tiếp diễn</div>
+        </div>
+      </div>
+      <div class="tc-body">
+        <div class="formula-box">
+          <span class="f-label">Formula</span>
+          <code style="color:var(--accent6);">S + was/were + V-ing</code>
+        </div>
+        <div class="signal-row">
+          <div class="signal-label">Signal words</div>
+          <div class="signals">
+            <span class="signal-chip" style="background:#fffbf5;border-color:#fde68a;color:var(--accent6);">at [time] yesterday</span>
+            <span class="signal-chip" style="background:#fffbf5;border-color:#fde68a;color:var(--accent6);">while</span>
+            <span class="signal-chip" style="background:#fffbf5;border-color:#fde68a;color:var(--accent6);">when (nền)</span>
+            <span class="signal-chip" style="background:#fffbf5;border-color:#fde68a;color:var(--accent6);">all day/night</span>
+          </div>
+        </div>
+        <ul class="usage-list">
+          <li>Đang xảy ra tại thời điểm xác định trong QK</li>
+          <li>Là "nền" cho hành động khác chen vào (when + QKĐ)</li>
+          <li>Hai hành động song song (while...was, ...was)</li>
+          <li>Hành động gây khó chịu trong QK (always + was/were)</li>
+          <li>Đặt bối cảnh mở đầu câu chuyện, văn kể</li>
+          <li><strong>Key rule:</strong> Dùng Past Continuous cho hành động đang diễn ra tại một thời điểm xác định hoặc làm nền trong quá khứ. Hành động chia ở QKTD phải là hành động <em>kéo dài hơn (nền)</em>; hành động chia ở QKĐ là hành động <em>bất ngờ xen ngang</em>.</li>
+          <li><strong>Công thức tư duy:</strong> Hành động kéo dài (Continuous) bị cắt bởi hành động ngắn (Simple).</li>
+        </ul>
+        <div class="example-box" style="border-color:var(--accent6);">
+          <div class="ex-label">Examples</div>
+          <p>I <strong>was studying</strong> <u>at 10 PM</u> last night.<br>She <strong>was cooking</strong> <u>when</u> he called.<br><u>While</u> she <strong>was reading</strong>, he <strong>was sleeping</strong>.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Past Perfect -->
+    <div class="tense-card">
+      <div class="tc-head" style="background:#fff5f7;">
+        <div class="tc-icon" style="background:#fce7eb;">⏮</div>
+        <div>
+          <div class="tc-name" style="color:var(--accent5);">Past Perfect</div>
+          <div class="tc-viet">Quá khứ hoàn thành</div>
+        </div>
+      </div>
+      <div class="tc-body">
+        <div class="formula-box">
+          <span class="f-label">Formula</span>
+          <code style="color:var(--accent5);">S + had + V3/ed</code>
+        </div>
+        <div class="signal-row">
+          <div class="signal-label">Signal words</div>
+          <div class="signals">
+            <span class="signal-chip" style="background:#fff5f7;border-color:#fca5a5;color:var(--accent5);">before</span>
+            <span class="signal-chip" style="background:#fff5f7;border-color:#fca5a5;color:var(--accent5);">after</span>
+            <span class="signal-chip" style="background:#fff5f7;border-color:#fca5a5;color:var(--accent5);">by the time</span>
+            <span class="signal-chip" style="background:#fff5f7;border-color:#fca5a5;color:var(--accent5);">when (trước đó)</span>
+            <span class="signal-chip" style="background:#fff5f7;border-color:#fca5a5;color:var(--accent5);">already / just</span>
+            <span class="signal-chip" style="background:#fff5f7;border-color:#fca5a5;color:var(--accent5);">never / scarcely</span>
+            <span class="signal-chip" style="background:#fff5f7;border-color:#fca5a5;color:var(--accent5);">no sooner...than</span>
+          </div>
+        </div>
+        <ul class="usage-list">
+          <li>Hành động xảy ra TRƯỚC một hành động QK khác</li>
+          <li>Điều kiện loại 3 (mệnh đề if: had + V3)</li>
+          <li>Câu gián tiếp — reported speech (lùi thì)</li>
+          <li>"Quá khứ của quá khứ" — hành động xa hơn trong dòng thời gian</li>
+        </ul>
+        <div class="example-box" style="border-color:var(--accent5);">
+          <div class="ex-label">Examples</div>
+          <p><u>By the time</u> I arrived, she <strong>had left</strong>.<br>He <strong>had never seen</strong> snow <u>before</u> 2010.<br>If I <strong>had studied</strong> harder, I would have passed.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Timeline visual -->
+  <div class="timeline-wrap">
+    <div class="tl-title">📊 Timeline — Visualizing the relationship</div>
+    <svg width="100%" viewBox="0 0 680 130" xmlns="http://www.w3.org/2000/svg" style="overflow:visible">
+      <line x1="40" y1="65" x2="640" y2="65" stroke="#ccc" stroke-width="1.5"/>
+      <polygon points="640,60 652,65 640,70" fill="#ccc"/>
+      <text x="660" y="69" font-size="11" fill="#999" font-family="DM Sans, sans-serif">NOW</text>
+      <circle cx="160" cy="65" r="7" fill="#c8334a"/>
+      <text x="160" y="45" text-anchor="middle" font-size="11" fill="#c8334a" font-weight="600" font-family="DM Sans, sans-serif">Past Perfect</text>
+      <text x="160" y="57" text-anchor="middle" font-size="10" fill="#999" font-family="DM Sans, sans-serif">"Quá khứ xa"</text>
+      <text x="160" y="88" text-anchor="middle" font-size="10" fill="#c8334a" font-family="JetBrains Mono, monospace">had + V3</text>
+      <line x1="167" y1="65" x2="340" y2="65" stroke="#c8334a" stroke-width="2" stroke-dasharray="5,3"/>
+      <circle cx="360" cy="65" r="7" fill="#b87300"/>
+      <text x="360" y="45" text-anchor="middle" font-size="11" fill="#b87300" font-weight="600" font-family="DM Sans, sans-serif">Past Simple/Cont.</text>
+      <text x="360" y="57" text-anchor="middle" font-size="10" fill="#999" font-family="DM Sans, sans-serif">"Quá khứ gần"</text>
+      <text x="360" y="88" text-anchor="middle" font-size="10" fill="#b87300" font-family="JetBrains Mono, monospace">V2 / was+V-ing</text>
+      <text x="40" y="115" text-anchor="middle" font-size="10" fill="#bbb" font-family="DM Sans, sans-serif">Xa</text>
+      <text x="590" y="115" text-anchor="middle" font-size="10" fill="#bbb" font-family="DM Sans, sans-serif">Gần / Hiện tại</text>
+    </svg>
+    <p style="font-size:12px;color:var(--muted);margin-top:8px;">Past Perfect (⏮) luôn xảy ra TRƯỚC Past Simple/Continuous trong cùng một câu hoặc đoạn văn.</p>
+  </div>
+
+  <div class="contrast-box">
+    <h3>⚖ Classic Trap — when + which tense?</h3>
+    <div class="contrast-rows">
+      <div class="contrast-row">
+        <div class="cr-left">
+          <p>I <u>was watching</u> TV when he arrived.</p>
+          <small style="color:#ef9f27">→ QKTD = hành động nền (đang xem) / QKĐ = chen vào</small>
+        </div>
+        <div class="cr-vs">VS</div>
+        <div class="cr-right">
+          <p>When he arrived, I <u>had already eaten</u>.</p>
+          <small style="color:#93c5fd">→ QKHT = xảy ra TRƯỚC khi anh ấy đến</small>
+        </div>
+      </div>
+      <div class="contrast-row">
+        <div class="cr-left">
+          <p><u>While</u> I <u>was cooking</u>, she studied.</p>
+          <small style="color:#ef9f27">→ while + QKTD = hai hành động song song</small>
+        </div>
+        <div class="cr-vs">VS</div>
+        <div class="cr-right">
+          <p>After I <u>had cooked</u>, she arrived.</p>
+          <small style="color:#93c5fd">→ had + V3 = nấu xong TRƯỚC mới đến</small>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="trick-strip">
+    <div class="trick-icon">💡</div>
+    <div class="trick-text"><strong>Trick nhớ nhanh:</strong> Trong câu có HAI hành động QK → Hành động xảy ra TRƯỚC dùng <strong>had + V3</strong> (QKHT) · Hành động xảy ra SAU dùng <strong>V2/ed</strong> (QKĐ). <strong>while/when + was/were + V-ing</strong> = hành động đang diễn ra bị "gián đoạn".<br><br><strong>No sooner...than:</strong> <em>No sooner had I sat down than the phone rang.</em> → Đảo ngữ với had.</div>
+  </div>
+
+  <div class="trick-strip" style="margin-top:10px;border-left-color:var(--accent5);">
+    <div class="trick-icon">🏆</div>
+    <div class="trick-text"><strong>PRO-TIP — Bí kíp ăn điểm tuyệt đối:</strong><br>
+    <strong>QKHT là "Anh cả" của Timeline:</strong> Nếu một câu có 2 sự kiện đều ở quá khứ, hãy tự hỏi: <em>"Cái nào xảy ra trước?"</em>. Cái xảy ra <strong>TRƯỚC TIÊN</strong> luôn chia QKHT, cái sau chia QKĐ.<br>
+    👉 <em>When I arrived at the station, the train had left.</em> <small style="color:#5a3d00;">(Tàu chạy mất rồi tôi mới tới → Tôi trễ tàu)</small><br><br>
+    <strong>Sự khác biệt tinh tế của "WHEN":</strong><br>
+    👉 <em>When he called, I was taking a shower.</em> <small style="color:#5a3d00;">(Mình đang tắm, điện thoại reo cắt ngang → QKTD)</small><br>
+    👉 <em>When he called, I had finished my work.</em> <small style="color:#5a3d00;">(Mình làm xong hết rồi điện thoại mới reo → QKHT)</small></div>
+  </div>
+
+  <div class="trick-strip" style="margin-top:10px;border-left-color:var(--accent1);">
+    <div class="trick-icon">🚨</div>
+    <div class="trick-text"><strong>Bẫy Ngữ Cảnh (Context Trap) — Cặp QKĐ &amp; QKTD:</strong><br>
+    <strong>1. Kiểm tra hành động nào là "nền":</strong> Hành động chia ở QKTD (<em>was/were + V-ing</em>) phải là hành động <em>kéo dài hơn</em>. Hành động chia ở QKĐ phải là hành động <em>bất ngờ, ngắn, xen ngang</em>. Nếu cả hai hành động cùng ngắn và không có <em>while/when</em> rõ ràng → câu sẽ gây nhầm lẫn.<br><br>
+    <strong>2. Thiếu ngữ cảnh → Câu có nhiều đáp án đúng:</strong> Câu <em>"I lost my keys"</em> đứng một mình có thể là QKĐ (đã mất, có thể đã tìm thấy) HOẶC cần HTHT (vừa mất, giờ không vào được nhà). Phải thêm vế phụ:<br>
+    ✅ <em>"I've lost my keys — I can't get into the house now!"</em> → ép dùng <strong>HTHT</strong> (kết quả ảnh hưởng đến HT)<br>
+    ✅ <em>"I lost my keys yesterday, but I found them later."</em> → ép dùng <strong>QKĐ</strong> (mốc thời gian cụ thể, đã kết thúc hẳn)</div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════
+     PAIR 4 · HTĐ vs TLĐ vs TL Tiếp Diễn
+════════════════════════════════════════════════ -->
+<div id="pair4" class="pair-section">
+  <div class="section-title">Cặp 04</div>
+  <div class="pair-header">
+    <span class="pair-badge" style="background:#fff0eb;color:var(--accent1);">HTĐ</span>
+    <span class="pair-title">vs</span>
+    <span class="pair-badge" style="background:#f0fff8;color:var(--accent3);">TLĐ</span>
+    <span class="pair-title">Future Simple</span>
+    <span style="color:var(--muted);font-size:20px;font-weight:300;">vs</span>
+    <span class="pair-badge" style="background:#ebf3ff;color:var(--accent2);">TLTD</span>
+    <span class="pair-title">Future Continuous</span>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:20px;">
+
+    <!-- HTĐ as future -->
+    <div class="tense-card">
+      <div class="tc-head" style="background:#fff7f5;">
+        <div class="tc-icon" style="background:#ffe8e0;">📅</div>
+        <div>
+          <div class="tc-name" style="color:var(--accent1);font-size:13px;">HTĐ → Tương lai</div>
+          <div class="tc-viet">Present Simple for Future</div>
+        </div>
+      </div>
+      <div class="tc-body">
+        <div class="formula-box"><span class="f-label">Formula</span><code style="color:var(--accent1);font-size:11px;">S + V(s/es)</code></div>
+        <ul class="usage-list">
+          <li>Lịch trình CỐ ĐỊNH, chính thức (tàu, xe, bay)</li>
+          <li>Thời khóa biểu, sự kiện đã được lên lịch</li>
+          <li>Mệnh đề sau: when / after / before / as soon as / until (trong câu TL)</li>
+        </ul>
+        <div class="example-box" style="border-color:var(--accent1);">
+          <div class="ex-label">Ex</div>
+          <p>The bus <strong>leaves</strong> at 6 AM.<br>I'll call when I <strong>arrive</strong>. <small style="color:var(--muted)">(NOT: will arrive)</small></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- TLĐ: will vs be going to -->
+    <div class="tense-card">
+      <div class="tc-head" style="background:#f0fff8;">
+        <div class="tc-icon" style="background:#d1fae5;">🚀</div>
+        <div>
+          <div class="tc-name" style="color:var(--accent3);font-size:13px;">Future Simple</div>
+          <div class="tc-viet">will / be going to</div>
+        </div>
+      </div>
+      <div class="tc-body">
+        <div class="formula-box"><span class="f-label">will</span><code style="color:var(--accent3);font-size:11px;">S + will + V</code></div>
+        <ul class="usage-list">
+          <li><strong>will:</strong> Quyết định tại thời điểm nói, dự đoán, lời hứa</li>
+          <li><strong>be going to:</strong> Kế hoạch đã có từ trước, dấu hiệu sắp xảy ra</li>
+        </ul>
+        <div class="example-box" style="border-color:var(--accent3);">
+          <div class="ex-label">Ex</div>
+          <p>"It's cold." — "I<strong>'ll</strong> close the window."<br>I<strong>'m going to</strong> study abroad next year.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Future Continuous -->
+    <div class="tense-card">
+      <div class="tc-head" style="background:#f0f6ff;">
+        <div class="tc-icon" style="background:#dbeafe;">⏳</div>
+        <div>
+          <div class="tc-name" style="color:var(--accent2);font-size:13px;">Future Continuous</div>
+          <div class="tc-viet">Tương lai tiếp diễn</div>
+        </div>
+      </div>
+      <div class="tc-body">
+        <div class="formula-box"><span class="f-label">Formula</span><code style="color:var(--accent2);font-size:11px;">S + will be + V-ing</code></div>
+        <ul class="usage-list">
+          <li>Sẽ ĐANG xảy ra tại một thời điểm trong TL</li>
+          <li>Hành động kéo dài xuyên suốt khoảng thời gian TL</li>
+          <li>Lịch trình/kế hoạch trong TL (lịch sự hơn will)</li>
+        </ul>
+        <div class="example-box" style="border-color:var(--accent2);">
+          <div class="ex-label">Ex</div>
+          <p>At 8 PM, I <strong>will be studying</strong>.<br>This time next week, we <strong>will be flying</strong> to Paris.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="contrast-box">
+    <h3>⚖ will vs be going to — The Famous Battle</h3>
+    <div class="contrast-rows">
+      <div class="contrast-row">
+        <div class="cr-left">
+          <p>"I <u>will</u> help you."</p>
+          <small style="color:#ef9f27">→ Quyết định ngay lúc nói (spontaneous decision)</small>
+        </div>
+        <div class="cr-vs">VS</div>
+        <div class="cr-right">
+          <p>"I <u>am going to</u> help you."</p>
+          <small style="color:#93c5fd">→ Đã có kế hoạch từ trước (pre-arranged plan)</small>
+        </div>
+      </div>
+      <div class="contrast-row">
+        <div class="cr-left">
+          <p>I think it <u>will rain</u> tomorrow.</p>
+          <small style="color:#ef9f27">→ Dự đoán không có bằng chứng cụ thể</small>
+        </div>
+        <div class="cr-vs">VS</div>
+        <div class="cr-right">
+          <p>Look at those clouds — it <u>is going to rain</u>.</p>
+          <small style="color:#93c5fd">→ Dự đoán có bằng chứng rõ ràng trước mắt</small>
+        </div>
+      </div>
+      <div class="contrast-row">
+        <div class="cr-left">
+          <p>At 8 PM, I <u>will study</u>.</p>
+          <small style="color:#ef9f27">→ Kế hoạch/ý định trong TL (đơn thuần)</small>
+        </div>
+        <div class="cr-vs">VS</div>
+        <div class="cr-right">
+          <p>At 8 PM, I <u>will be studying</u>.</p>
+          <small style="color:#93c5fd">→ Nhấn mạnh đang diễn ra tại đúng thời điểm đó</small>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="trick-strip">
+    <div class="trick-icon">💡</div>
+    <div class="trick-text"><strong>3 câu hỏi để chọn đúng thì tương lai:</strong><br>
+    1. Có lịch cố định không? → <strong>HTĐ</strong> (leaves/arrives) · Mệnh đề phụ after/when → <strong>HTĐ</strong><br>
+    2. Kế hoạch sẵn có / bằng chứng trước mắt → <strong>be going to</strong><br>
+    3. Quyết định tức thì / dự đoán thuần túy / lời hứa → <strong>will</strong><br>
+    4. Đang xảy ra tại thời điểm cụ thể trong TL → <strong>will be + V-ing</strong></div>
+  </div>
+
+  <div class="trick-strip" style="margin-top:10px;border-left-color:var(--accent3);">
+    <div class="trick-icon">🏆</div>
+    <div class="trick-text"><strong>PRO-TIP — Bí kíp ăn điểm tuyệt đối:</strong><br>
+    <strong>Đừng dùng TLĐ cho lịch trình:</strong> Dù có từ "tomorrow", các chuyến bay/tàu hỏa vẫn phải dùng HTĐ.<br>
+    ✅ <em>The flight leaves at 7 PM tomorrow.</em><br><br>
+    <strong>Will vs Be going to — Điểm ăn điểm nâng cao:</strong> Dùng <strong>Will</strong> khi bạn quyết định ngay lúc nói (<em>I will buy it!</em>). Dùng <strong>Be going to</strong> khi bạn đã lên kế hoạch từ trước hoặc có dấu hiệu ở hiện tại (<em>Look at those clouds! It is going to rain</em>).<br><br>
+    <strong>TLTD là một điểm neo thời gian:</strong> Nếu nhìn vào tương lai tại đúng khoảnh khắc đó, bạn sẽ thấy hành động đang xảy ra dở dang.<br>
+    👉 <em>Don't call me at 8 PM tonight. I will be watching the match.</em> <small style="color:#5a3d00;">(Đừng gọi vì lúc đó tôi đang bận xem dở trận đấu)</small></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════
+     ADVANCED TENSES (NEW)
+════════════════════════════════════════════════ -->
+<div id="advanced" class="pair-section">
+  <div class="section-title">Thì Nâng Cao — Thường bị bỏ qua</div>
+  <h2 style="font-family:'Syne',sans-serif;font-size:26px;font-weight:800;margin-bottom:24px;">Các thì hoàn thành tiếp diễn 🔬</h2>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px;">
+
+    <!-- Present Perfect Continuous -->
+    <div class="tense-card">
+      <div class="tc-head" style="background:#f0fff8;">
+        <div class="tc-icon" style="background:#d1fae5;">🔄</div>
+        <div>
+          <div class="tc-name" style="color:var(--accent3);font-size:14px;">Present Perfect Continuous</div>
+          <div class="tc-viet">Hiện tại hoàn thành tiếp diễn</div>
+        </div>
+      </div>
+      <div class="tc-body">
+        <div class="formula-box">
+          <span class="f-label">Formula</span>
+          <code style="color:var(--accent3);font-size:12px;">S + have/has been + V-ing</code>
+        </div>
+        <div class="signal-row">
+          <div class="signal-label">Signal words</div>
+          <div class="signals">
+            <span class="signal-chip" style="background:#f0fff8;border-color:#a7f3d0;color:var(--accent3);">for / since</span>
+            <span class="signal-chip" style="background:#f0fff8;border-color:#a7f3d0;color:var(--accent3);">all day / all morning</span>
+            <span class="signal-chip" style="background:#f0fff8;border-color:#a7f3d0;color:var(--accent3);">lately / recently</span>
+          </div>
+        </div>
+        <ul class="usage-list">
+          <li>Hành động BẮT ĐẦU từ QK, ĐANG TIẾP TỤC đến HT (nhấn mạnh quá trình)</li>
+          <li>Giải thích nguyên nhân của kết quả HT (She's tired because she <em>has been working</em> all day)</li>
+          <li>Hành động gần đây để lại dấu vết rõ ràng</li>
+        </ul>
+        <div class="example-box" style="border-color:var(--accent3);">
+          <div class="ex-label">Examples</div>
+          <p>I <strong>have been studying</strong> English for 3 years.<br>Your eyes are red. <em>Have you been crying?</em><br>She <strong>has been working</strong> here since 2020.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Past Perfect Continuous -->
+    <div class="tense-card">
+      <div class="tc-head" style="background:#fff5f7;">
+        <div class="tc-icon" style="background:#fce7eb;">⏪</div>
+        <div>
+          <div class="tc-name" style="color:var(--accent5);font-size:14px;">Past Perfect Continuous</div>
+          <div class="tc-viet">Quá khứ hoàn thành tiếp diễn</div>
+        </div>
+      </div>
+      <div class="tc-body">
+        <div class="formula-box">
+          <span class="f-label">Formula</span>
+          <code style="color:var(--accent5);font-size:12px;">S + had been + V-ing</code>
+        </div>
+        <div class="signal-row">
+          <div class="signal-label">Signal words</div>
+          <div class="signals">
+            <span class="signal-chip" style="background:#fff5f7;border-color:#fca5a5;color:var(--accent5);">for / since (trong QK)</span>
+            <span class="signal-chip" style="background:#fff5f7;border-color:#fca5a5;color:var(--accent5);">before</span>
+            <span class="signal-chip" style="background:#fff5f7;border-color:#fca5a5;color:var(--accent5);">when / by the time</span>
+          </div>
+        </div>
+        <ul class="usage-list">
+          <li>Hành động đang xảy ra TRƯỚC một hành động khác trong QK (nhấn mạnh quá trình)</li>
+          <li>Giải thích nguyên nhân trong QK: <em>He was tired because he had been running.</em></li>
+          <li>Thì "sâu nhất" trong quá khứ — quá khứ của quá khứ tiếp diễn</li>
+        </ul>
+        <div class="example-box" style="border-color:var(--accent5);">
+          <div class="ex-label">Examples</div>
+          <p>He <strong>had been waiting</strong> for 2 hours when she finally arrived.<br>They <strong>had been arguing</strong> before I walked in.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Future Perfect -->
+    <div class="tense-card">
+      <div class="tc-head" style="background:#faf5ff;">
+        <div class="tc-icon" style="background:#ede9fe;">🏁</div>
+        <div>
+          <div class="tc-name" style="color:var(--accent4);font-size:14px;">Future Perfect</div>
+          <div class="tc-viet">Tương lai hoàn thành</div>
+        </div>
+      </div>
+      <div class="tc-body">
+        <div class="formula-box">
+          <span class="f-label">Formula</span>
+          <code style="color:var(--accent4);font-size:12px;">S + will have + V3/ed</code>
+        </div>
+        <div class="signal-row">
+          <div class="signal-label">Signal words</div>
+          <div class="signals">
+            <span class="signal-chip" style="background:#faf5ff;border-color:#ddd6fe;color:var(--accent4);">by + [time future]</span>
+            <span class="signal-chip" style="background:#faf5ff;border-color:#ddd6fe;color:var(--accent4);">by the time...</span>
+            <span class="signal-chip" style="background:#faf5ff;border-color:#ddd6fe;color:var(--accent4);">before + [future]</span>
+          </div>
+        </div>
+        <ul class="usage-list">
+          <li>Hành động SẼ HOÀN THÀNH trước một mốc thời gian trong TL</li>
+          <li>Dự đoán về sự hoàn thành: <em>By 2030, AI will have changed everything.</em></li>
+          <li>Thường đi kèm "by" + thời điểm TL</li>
+        </ul>
+        <div class="example-box" style="border-color:var(--accent4);">
+          <div class="ex-label">Examples</div>
+          <p><u>By next year</u>, I <strong>will have graduated</strong>.<br><u>By the time</u> you arrive, we <strong>will have eaten</strong>.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Future Perfect Continuous -->
+    <div class="tense-card">
+      <div class="tc-head" style="background:#f0f6ff;">
+        <div class="tc-icon" style="background:#dbeafe;">🔮</div>
+        <div>
+          <div class="tc-name" style="color:var(--accent2);font-size:14px;">Future Perfect Continuous</div>
+          <div class="tc-viet">Tương lai hoàn thành tiếp diễn</div>
+        </div>
+      </div>
+      <div class="tc-body">
+        <div class="formula-box">
+          <span class="f-label">Formula</span>
+          <code style="color:var(--accent2);font-size:12px;">S + will have been + V-ing</code>
+        </div>
+        <div class="signal-row">
+          <div class="signal-label">Signal words</div>
+          <div class="signals">
+            <span class="signal-chip" style="background:#ebf3ff;border-color:#bfdbfe;color:var(--accent2);">by [time], for [duration]</span>
+            <span class="signal-chip" style="background:#ebf3ff;border-color:#bfdbfe;color:var(--accent2);">how long</span>
+          </div>
+        </div>
+        <ul class="usage-list">
+          <li>Nhấn mạnh sự LIÊN TỤC của hành động cho đến một thời điểm TL</li>
+          <li>Ít gặp trong giao tiếp, nhưng ra trong IELTS/TOEIC nâng cao</li>
+        </ul>
+        <div class="example-box" style="border-color:var(--accent2);">
+          <div class="ex-label">Example</div>
+          <p><u>By 2030</u>, she <strong>will have been teaching</strong> for 20 years.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HTHT vs HTTD Contrast -->
+  <div class="contrast-box">
+    <h3>⚖ Present Perfect vs Present Perfect Continuous — Subtlety màu nâu đất</h3>
+    <div class="contrast-rows">
+      <div class="contrast-row">
+        <div class="cr-left">
+          <p>I <u>have read</u> that book.</p>
+          <small style="color:#ef9f27">→ Nhấn mạnh KẾT QUẢ (đã đọc xong, kinh nghiệm)</small>
+        </div>
+        <div class="cr-vs">VS</div>
+        <div class="cr-right">
+          <p>I <u>have been reading</u> that book.</p>
+          <small style="color:#93c5fd">→ Nhấn mạnh QUÁ TRÌNH (vẫn đang đọc, chưa chắc xong)</small>
+        </div>
+      </div>
+      <div class="contrast-row">
+        <div class="cr-left">
+          <p>She <u>has written</u> 3 reports today.</p>
+          <small style="color:#ef9f27">→ Số lượng cụ thể → Present Perfect (kết quả đếm được)</small>
+        </div>
+        <div class="cr-vs">VS</div>
+        <div class="cr-right">
+          <p>She <u>has been writing</u> reports all day.</p>
+          <small style="color:#93c5fd">→ Suốt cả ngày → PPC (nhấn mạnh khoảng thời gian)</small>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="trick-strip">
+    <div class="trick-icon">💡</div>
+    <div class="trick-text"><strong>Công thức nhớ nhanh các thì HTHT:</strong><br>
+    · <strong>have/has + V3</strong> → HTHT → nhấn mạnh kết quả<br>
+    · <strong>have/has been + V-ing</strong> → HTHT tiếp diễn → nhấn mạnh quá trình đang tiếp diễn<br>
+    · <strong>had + V3</strong> → QKHT → "quá khứ của quá khứ" kết quả<br>
+    · <strong>had been + V-ing</strong> → QKHTD → "quá khứ của quá khứ" tiếp diễn<br>
+    · <strong>will have + V3</strong> → TLHT → sẽ hoàn thành trước mốc TL</div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════
+     CHEAT SHEET
+════════════════════════════════════════════════ -->
+<div id="cheat" class="pair-section">
+  <div class="section-title">Master Reference</div>
+  <h2 style="font-family:'Syne',sans-serif;font-size:26px;font-weight:800;margin-bottom:24px;">Bảng tóm tắt toàn bộ 12 thì</h2>
+
+  <div class="cheat-grid">
+    <div class="cheat-card" style="border-left:4px solid var(--accent1);">
+      <div class="cc-name" style="color:var(--accent1);">Present Simple</div>
+      <div class="cc-form">S + V(s/es)</div>
+      <div class="cc-when">Thói quen · Sự thật · Lịch cố định · Stative verbs</div>
+    </div>
+    <div class="cheat-card" style="border-left:4px solid var(--accent2);">
+      <div class="cc-name" style="color:var(--accent2);">Present Continuous</div>
+      <div class="cc-form">S + am/is/are + V-ing</div>
+      <div class="cc-when">Đang xảy ra · Tạm thời · KH tương lai gần · Xu hướng</div>
+    </div>
+    <div class="cheat-card" style="border-left:4px solid var(--accent3);">
+      <div class="cc-name" style="color:var(--accent3);">Present Perfect</div>
+      <div class="cc-form">S + have/has + V3</div>
+      <div class="cc-when">KQ đến HT · Kinh nghiệm · since/for · just/already/yet</div>
+    </div>
+    <div class="cheat-card" style="border-left:4px solid #059669;">
+      <div class="cc-name" style="color:#059669;">Present Perfect Continuous</div>
+      <div class="cc-form">S + have/has been + V-ing</div>
+      <div class="cc-when">Quá trình từ QK đến HT · Giải thích nguyên nhân HT</div>
+    </div>
+    <div class="cheat-card" style="border-left:4px solid var(--accent4);">
+      <div class="cc-name" style="color:var(--accent4);">Past Simple</div>
+      <div class="cc-form">S + V2/did not + V</div>
+      <div class="cc-when">Xong hẳn trong QK · Có mốc thời gian cụ thể</div>
+    </div>
+    <div class="cheat-card" style="border-left:4px solid var(--accent6);">
+      <div class="cc-name" style="color:var(--accent6);">Past Continuous</div>
+      <div class="cc-form">S + was/were + V-ing</div>
+      <div class="cc-when">Đang xảy ra trong QK · Nền cho hành động khác</div>
+    </div>
+    <div class="cheat-card" style="border-left:4px solid var(--accent5);">
+      <div class="cc-name" style="color:var(--accent5);">Past Perfect</div>
+      <div class="cc-form">S + had + V3</div>
+      <div class="cc-when">Xảy ra TRƯỚC một hành động QK khác · before/after/by the time</div>
+    </div>
+    <div class="cheat-card" style="border-left:4px solid #be123c;">
+      <div class="cc-name" style="color:#be123c;">Past Perfect Continuous</div>
+      <div class="cc-form">S + had been + V-ing</div>
+      <div class="cc-when">Đang xảy ra LIÊN TỤC trước một điểm QK · Giải thích nguyên nhân QK</div>
+    </div>
+    <div class="cheat-card" style="border-left:4px solid #7c3aed;">
+      <div class="cc-name" style="color:#7c3aed;">Future Simple (will)</div>
+      <div class="cc-form">S + will + V</div>
+      <div class="cc-when">Quyết định tức thì · Dự đoán · Lời hứa · Điều kiện loại 1</div>
+    </div>
+    <div class="cheat-card" style="border-left:4px solid #0e9e68;">
+      <div class="cc-name" style="color:#0e9e68;">Future (be going to)</div>
+      <div class="cc-form">S + am/is/are going to + V</div>
+      <div class="cc-when">Kế hoạch có sẵn · Dấu hiệu sắp xảy ra rõ ràng</div>
+    </div>
+    <div class="cheat-card" style="border-left:4px solid #0891b2;">
+      <div class="cc-name" style="color:#0891b2;">Future Continuous</div>
+      <div class="cc-form">S + will be + V-ing</div>
+      <div class="cc-when">Sẽ ĐANG xảy ra tại thời điểm cụ thể trong TL</div>
+    </div>
+    <div class="cheat-card" style="border-left:4px solid #6d28d9;">
+      <div class="cc-name" style="color:#6d28d9;">Future Perfect</div>
+      <div class="cc-form">S + will have + V3</div>
+      <div class="cc-when">Sẽ HOÀN THÀNH trước một mốc TL · by + [future time]</div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════
+     TRAP TABLE
+════════════════════════════════════════════════ -->
+<div id="trap" class="pair-section">
+  <div class="section-title">Exam Intelligence</div>
+  <h2 style="font-family:'Syne',sans-serif;font-size:26px;font-weight:800;margin-bottom:24px;">Bẫy hay ra trong bài thi 🎯</h2>
+
+  <div style="border:1px solid var(--border);border-radius:12px;overflow:hidden;">
+    <table class="question-table">
+      <thead style="background:var(--warm);">
+        <tr>
+          <th style="width:28%">Dấu hiệu / Tình huống</th>
+          <th style="width:20%">Thì ĐÚNG</th>
+          <th style="width:52%">Lý do / Bẫy cụ thể</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code style="font-family:'JetBrains Mono',monospace;font-size:12px;background:#f5f5f5;padding:2px 6px;border-radius:3px;">since / for</code></td>
+          <td><span style="color:var(--accent3);font-weight:600;">Present Perfect</span></td>
+          <td>Since = mốc bắt đầu · For = khoảng thời gian. Câu này KHÔNG dùng Past Simple!</td>
+        </tr>
+        <tr>
+          <td><code style="font-family:'JetBrains Mono',monospace;font-size:12px;background:#f5f5f5;padding:2px 6px;border-radius:3px;">while ... past</code></td>
+          <td><span style="color:var(--accent6);font-weight:600;">Past Continuous</span></td>
+          <td>While + QKTD (nền dài) // when + QKĐ (chen ngắn) — không thể đảo ngược!</td>
+        </tr>
+        <tr>
+          <td><code style="font-family:'JetBrains Mono',monospace;font-size:12px;background:#f5f5f5;padding:2px 6px;border-radius:3px;">by the time + past</code></td>
+          <td><span style="color:var(--accent5);font-weight:600;">Past Perfect</span></td>
+          <td>"By the time he arrived, I had left." → QKHT trước QKĐ. "By + future time" → Future Perfect!</td>
+        </tr>
+        <tr>
+          <td><code style="font-family:'JetBrains Mono',monospace;font-size:12px;background:#f5f5f5;padding:2px 6px;border-radius:3px;">always + present</code></td>
+          <td><span style="color:var(--accent1);font-weight:600;">Present Simple</span></td>
+          <td>Nhưng "always + is/are + V-ing" = phàn nàn về thói quen xấu (annoying habit)!</td>
+        </tr>
+        <tr>
+          <td>Động từ: know, love, want, need, believe, own...</td>
+          <td><span style="color:var(--accent1);font-weight:600;">Present Simple</span></td>
+          <td>Stative verbs KHÔNG dùng với -ing (kể cả khi hỏi "lúc này"). Ngoại lệ: một số có nghĩa kép.</td>
+        </tr>
+        <tr>
+          <td>Look at those clouds!</td>
+          <td><span style="color:var(--accent3);font-weight:600;">be going to</span></td>
+          <td>Có bằng chứng trực quan → going to, KHÔNG dùng will</td>
+        </tr>
+        <tr>
+          <td><code style="font-family:'JetBrains Mono',monospace;font-size:12px;background:#f5f5f5;padding:2px 6px;border-radius:3px;">this time next week/year</code></td>
+          <td><span style="color:var(--accent2);font-weight:600;">Future Continuous</span></td>
+          <td>"This time next week, I will be flying..." = đang diễn ra tại đúng thời điểm TL đó</td>
+        </tr>
+        <tr>
+          <td>If + past simple...</td>
+          <td><span style="color:#7c3aed;font-weight:600;">would + V (Type 2)</span></td>
+          <td>Câu điều kiện loại 2: if + V2 → would + V (giả định không thực ở HT/TL)</td>
+        </tr>
+        <tr>
+          <td>If + past perfect...</td>
+          <td><span style="color:var(--accent5);font-weight:600;">would have + V3 (Type 3)</span></td>
+          <td>Câu điều kiện loại 3: if + had + V3 → would have + V3 (hối tiếc về QK)</td>
+        </tr>
+        <tr>
+          <td>After/when + future meaning</td>
+          <td><span style="color:var(--accent1);font-weight:600;">Present Simple (NOT will!)</span></td>
+          <td>"I'll call you when I <u>arrive</u>" — KHÔNG dùng will trong mệnh đề phụ sau when/after/before/until</td>
+        </tr>
+        <tr>
+          <td>for + khoảng thời gian → nhấn mạnh quá trình</td>
+          <td><span style="color:#059669;font-weight:600;">Pres. Perfect Continuous</span></td>
+          <td>"I've been studying for 3 hours" (nhấn mạnh quá trình) vs "I've studied" (nhấn mạnh kết quả)</td>
+        </tr>
+        <tr>
+          <td>Câu gián tiếp lùi thì: "I am busy" → said</td>
+          <td><span style="color:var(--accent6);font-weight:600;">Past → lùi thêm một bậc</span></td>
+          <td>HTĐ → QKĐ · HTTD → QKTD · HTHT → QKHT · will → would · can → could</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════
+     🔥 REAL-LIFE RULE BREAKERS (NEW)
+════════════════════════════════════════════════ -->
+<div id="rebel" class="pair-section">
+  <div class="section-title">Tiếng Anh Đời Thực</div>
+  <div class="rebel-section">
+    <div class="rebel-header">
+      <div class="rebel-badge">🔥</div>
+      <div>
+        <div class="rebel-title">Phá Luật Đời Thực</div>
+        <div class="rebel-subtitle">Người bản xứ cố tình vi phạm ngữ pháp để tạo hiệu ứng đặc biệt.<br>Hiểu điều này = bạn đã vượt qua sách giáo khoa.</div>
+      </div>
+    </div>
+
+    <div class="rebel-cards">
+
+      <div class="rebel-card">
+        <div class="rebel-num">01</div>
+        <div>
+          <div class="rebel-brand">
+            <span style="font-size:18px;">🍔</span>
+            <span class="rebel-brand-name">McDonald's</span>
+          </div>
+          <div class="rebel-quote">"I'm lovin' it!"</div>
+          <div class="rebel-rule">🚫 Quy tắc vi phạm: love là stative verb → KHÔNG được dùng -ing</div>
+          <div class="rebel-explanation">
+            Sách ngữ pháp dạy: <strong>"love" không có dạng -ing</strong> vì nó là stative verb (trạng thái tĩnh). Nhưng McDonald's cố tình dùng <strong>"I'm lovin' it"</strong> thay vì "I love it" để nhấn mạnh cảm giác sung sướng, phấn khích đang <em>bùng nổ ngay khoảnh khắc đó</em> — như thể hạnh phúc quá đến mức trở thành một hành động đang diễn ra. Đây là <strong>nghệ thuật grammar bending</strong>.
+          </div>
+          <span class="rebel-verdict">✅ Có chủ ý · Tạo cảm xúc tức thì</span>
+        </div>
+      </div>
+
+      <div class="rebel-card">
+        <div class="rebel-num">02</div>
+        <div>
+          <div class="rebel-brand">
+            <span style="font-size:18px;">🎵</span>
+            <span class="rebel-brand-name">Giao tiếp hàng ngày</span>
+          </div>
+          <div class="rebel-quote">"I'm hating this weather."</div>
+          <div class="rebel-rule">🚫 Quy tắc vi phạm: hate là stative verb → theo sách phải dùng "I hate this weather"</div>
+          <div class="rebel-explanation">
+            Người bản xứ (đặc biệt giới trẻ Mỹ) ngày càng dùng <strong>stative verbs + -ing</strong> để nhấn mạnh cảm xúc <em>đang diễn ra mạnh mẽ</em> tại thời điểm đó. "I'm hating this" = tôi đang ghét điều này đến mức cực độ ngay lúc này. Cũng thường gặp: <em>"I'm loving this song," "We're enjoying it so much."</em>
+          </div>
+          <span class="rebel-verdict">⚡ Informal · Cảm xúc cao độ · Không dùng trong văn viết trang trọng</span>
+        </div>
+      </div>
+
+      <div class="rebel-card">
+        <div class="rebel-num">03</div>
+        <div>
+          <div class="rebel-brand">
+            <span style="font-size:18px;">🗣️</span>
+            <span class="rebel-brand-name">Văn nói tự nhiên</span>
+          </div>
+          <div class="rebel-quote">"We was just talking about you!"</div>
+          <div class="rebel-rule">🚫 Quy tắc vi phạm: We + were (NOT was) → chia sai động từ</div>
+          <div class="rebel-explanation">
+            <strong>African American Vernacular English (AAVE)</strong> và nhiều phương ngữ Anh dùng "was" cho mọi ngôi trong quá khứ tiếp diễn. Điều này không phải sai mà là <strong>hệ thống ngữ pháp riêng của một cộng đồng</strong>. Bạn sẽ gặp trong nhạc hip-hop, phim Mỹ, và văn hóa đại chúng. Biết điều này giúp bạn hiểu người bản xứ thực sự — không chỉ giáo viên.
+          </div>
+          <span class="rebel-verdict">📚 Phương ngữ · AAVE · Không dùng trong thi cử</span>
+        </div>
+      </div>
+
+      <div class="rebel-card">
+        <div class="rebel-num">04</div>
+        <div>
+          <div class="rebel-brand">
+            <span style="font-size:18px;">✍️</span>
+            <span class="rebel-brand-name">Văn học & Báo chí</span>
+          </div>
+          <div class="rebel-quote">The president tweets, the market crashes.</div>
+          <div class="rebel-rule">🚫 Quy tắc vi phạm: Kể chuyện QK nhưng dùng HTĐ</div>
+          <div class="rebel-explanation">
+            <strong>Historical Present</strong> — dùng HTĐ để kể chuyện quá khứ nhằm <em>kéo người đọc vào khoảnh khắc đó</em>, tạo cảm giác sống động như đang xảy ra. Thường thấy trong báo chí, tiêu đề tin tức ("Man saves dog, becomes hero"), và kể chuyện cá nhân: <em>"So I'm walking down the street and suddenly this guy appears..."</em>
+          </div>
+          <span class="rebel-verdict">✅ Kỹ thuật văn học · Rất phổ biến trong oral storytelling</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div style="margin-top:20px;background:rgba(255,255,255,.05);border-radius:10px;padding:18px 22px;">
+      <p style="font-size:13px;color:rgba(255,255,255,.55);line-height:1.7;font-style:italic;">
+        <strong style="color:rgba(255,255,255,.8);">Bài học cốt lõi:</strong> Quy tắc ngữ pháp sinh ra để phục vụ giao tiếp — không phải ngược lại. Nắm vững luật trước (để thi), rồi học cách người bản xứ "bẻ cong" chúng có chủ ý. Đó là sự khác biệt giữa người học ngữ pháp và người <em>thực sự biết ngôn ngữ</em>.
+      </p>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════
+     🎩 THE POLITE PAST (NEW)
+════════════════════════════════════════════════ -->
+<div id="polite" class="pair-section">
+  <div class="section-title">Ngữ pháp Xã giao Nâng cao</div>
+  <div class="polite-section">
+    <div class="polite-header">
+      <div class="polite-badge-icon">🎩</div>
+      <div>
+        <div class="polite-title">Sự Lịch Sự "Giả Trân" của Quá Khứ</div>
+        <div class="polite-subtitle">Quá Khứ không chỉ nói về quá khứ. Người Anh/Mỹ dùng thì QK để nhờ vả ở<br>hiện tại — tạo khoảng cách lịch sự, giảm áp đặt. Đây là bí mật ít tài liệu nhắc tới.</div>
+      </div>
+    </div>
+
+    <div class="polite-scale" style="margin-bottom:20px;">
+      <span style="font-size:12px;font-weight:600;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.08em;">Thang độ lịch sự:</span>
+      <span class="polite-level rude">😤 Trực tiếp</span>
+      <span style="color:rgba(255,255,255,.2);font-size:16px;">→</span>
+      <span class="polite-level neutral">😐 Bình thường</span>
+      <span style="color:rgba(255,255,255,.2);font-size:16px;">→</span>
+      <span class="polite-level polite">😊 Lịch sự</span>
+      <span style="color:rgba(255,255,255,.2);font-size:16px;">→</span>
+      <span class="polite-level verypolite">🤝 Rất chuyên nghiệp</span>
+    </div>
+
+    <div class="polite-cards">
+
+      <div class="polite-card">
+        <div class="polite-scenario">📋 Tình huống 1: Nhờ vả ai đó</div>
+        <div class="polite-comparison">
+          <div class="polite-row">
+            <span class="polite-tag tag-rude">Thô</span>
+            <span class="polite-sent">"I want to ask you a favor."</span>
+          </div>
+          <div class="polite-row">
+            <span class="polite-tag tag-ok">OK</span>
+            <span class="polite-sent">"I need your help with something."</span>
+          </div>
+          <div class="polite-row">
+            <span class="polite-tag tag-smooth">Lịch sự</span>
+            <span class="polite-sent">"I <strong>wanted</strong> to ask you a favor."</span>
+            <span class="polite-note">→ Dùng Past Simple cho yêu cầu ở HT!</span>
+          </div>
+          <div class="polite-row">
+            <span class="polite-tag tag-pro">Pro</span>
+            <span class="polite-sent">"I <strong>was wondering</strong> if you could help me."</span>
+            <span class="polite-note">→ Past Continuous = lịch sự nhất</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="polite-card">
+        <div class="polite-scenario">💼 Tình huống 2: Hỏi về khả năng / xin phép</div>
+        <div class="polite-comparison">
+          <div class="polite-row">
+            <span class="polite-tag tag-rude">Áp đặt</span>
+            <span class="polite-sent">"Can you send me the report?"</span>
+          </div>
+          <div class="polite-row">
+            <span class="polite-tag tag-smooth">Lịch sự</span>
+            <span class="polite-sent">"<strong>Could</strong> you send me the report?"</span>
+            <span class="polite-note">→ could = quá khứ của can, tăng lịch sự</span>
+          </div>
+          <div class="polite-row">
+            <span class="polite-tag tag-pro">Rất lịch sự</span>
+            <span class="polite-sent">"I <strong>was hoping</strong> you could send me the report."</span>
+            <span class="polite-note">→ Past Continuous + could = cực kỳ tinh tế</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="polite-card">
+        <div class="polite-scenario">🍽️ Tình huống 3: Đặt hàng / gọi món (nhà hàng, email)</div>
+        <div class="polite-comparison">
+          <div class="polite-row">
+            <span class="polite-tag tag-ok">Thẳng</span>
+            <span class="polite-sent">"I want the salmon."</span>
+          </div>
+          <div class="polite-row">
+            <span class="polite-tag tag-smooth">Lịch sự</span>
+            <span class="polite-sent">"I <strong>wanted</strong> the salmon, please."</span>
+            <span class="polite-note">→ Nghe mềm mại, không áp đặt hơn hẳn</span>
+          </div>
+          <div class="polite-row">
+            <span class="polite-tag tag-pro">Email Pro</span>
+            <span class="polite-sent">"I <strong>was wondering</strong> whether you might have availability next week."</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="polite-card">
+        <div class="polite-scenario">🔬 Tại sao lại dùng thì Quá Khứ?</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:8px;">
+          <div>
+            <div style="font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.3);margin-bottom:8px;">Giải thích ngôn ngữ học</div>
+            <p style="font-size:13px;color:rgba(255,255,255,.65);line-height:1.65;">Thì Quá Khứ tạo ra <strong style="color:#67e8f9;">khoảng cách tâm lý</strong> (psychological distance) giữa yêu cầu và người nhận. Càng xa với HT → càng bớt áp đặt, áp lực giảm đi, người nghe tự nhiên cảm thấy <em>được trao quyền lựa chọn</em> hơn.</p>
+          </div>
+          <div>
+            <div style="font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.3);margin-bottom:8px;">Modal lịch sự theo thứ tự</div>
+            <div style="font-size:13px;color:rgba(255,255,255,.65);line-height:1.9;">
+              can → <strong style="color:#fbbf24;">could</strong> (lịch sự hơn)<br>
+              will → <strong style="color:#fbbf24;">would</strong> (lịch sự hơn)<br>
+              shall → <strong style="color:#fbbf24;">should</strong> (đề xuất nhẹ nhàng)<br>
+              may → <strong style="color:#fbbf24;">might</strong> (bất định, rất lịch sự)
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="polite-insight">
+      <strong>🏆 Ứng dụng thực tế:</strong> Trong email công việc, phỏng vấn, hay gặp gỡ người quan trọng, thay vì nói <em>"I want to know..."</em> hoặc <em>"Can you tell me..."</em> — hãy nói <strong>"I was wondering if you could tell me..."</strong> hoặc <strong>"I wanted to ask about..."</strong> Hai câu này âm thanh có vẻ "sai ngữ pháp" (nói về HT mà dùng QK) nhưng lại là <em>cách người chuyên nghiệp thực sự nói chuyện</em>.
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════
+     🧪 ACTIVE QUIZ (NEW - Interactive)
+════════════════════════════════════════════════ -->
+<div id="quiz" class="pair-section">
+  <div class="section-title">Active Learning</div>
+  <div class="quiz-section">
+    <div class="quiz-header">
+      <h2>🧪 Mini Quiz — Kiểm tra ngay!</h2>
+      <div style="display:flex;gap:10px;align-items:center;">
+        <div class="quiz-score-badge" id="scoreBadge">Điểm: 0/0</div>
+        <div class="quiz-progress" id="progressBadge">Câu 1/12</div>
+      </div>
+    </div>
+
+    <div id="quizContainer">
+      <div class="quiz-card" id="quizCard">
+        <div class="quiz-signal" id="quizSignal">Loading...</div>
+        <div class="quiz-hint" id="quizHint"></div>
+      </div>
+      <div class="quiz-options" id="quizOptions"></div>
+      <div class="quiz-explain" id="quizExplain"></div>
+      <div class="quiz-nav">
+        <button class="quiz-btn" id="prevBtn" onclick="prevQ()" disabled>← Trước</button>
+        <button class="quiz-btn primary" id="nextBtn" onclick="nextQ()" disabled>Tiếp →</button>
+        <button class="quiz-btn" id="restartBtn" onclick="restartQuiz()" style="display:none;">🔄 Làm lại</button>
+      </div>
+    </div>
+
+    <div class="quiz-result" id="quizResult">
+      <div class="result-score" id="resultScore">0/12</div>
+      <p id="resultMsg">Đang tính điểm...</p>
+      <button class="quiz-btn primary" style="margin-top:20px;" onclick="restartQuiz()">🔄 Làm lại từ đầu</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════
+     MOTIVATIONAL FOOTER STRIP
+════════════════════════════════════════════════ -->
+<div style="margin-top:40px;background:var(--ink);color:var(--paper);border-radius:16px;padding:36px;text-align:center;">
+  <div style="font-family:'Syne',sans-serif;font-size:32px;font-weight:800;margin-bottom:12px;">You've got this. 🏆</div>
+  <p style="color:rgba(255,255,255,.6);font-size:15px;line-height:1.7;max-width:560px;margin:0 auto;">Nắm vững 3 điều: <strong style="color:#ef9f27">công thức</strong> · <strong style="color:#6ee7b7">signal words</strong> · <strong style="color:#93c5fd">logic dùng thì</strong>. Luyện đủ context thực tế — thì sẽ tự nhiên như hít thở. Và đừng quên: người bản xứ <em>phá luật có chủ ý</em> — nhưng họ biết luật trước khi phá.</p>
+</div>
+
+</main>
+
+<footer class="footer">
+  ENGLISH TENSES MASTER GUIDE v2.0 · Enhanced Edition · Made to Win
+</footer>
+
+<script>
+// ── QUIZ ENGINE ─────────────────────────────────────────────────────────────
+const questions = [
+  {
+    signal: "She ___ to music right now.",
+    hint: "Chú ý: 'right now' là signal word của thì nào?",
+    answer: "is listening",
+    options: ["listens", "is listening", "listened", "has listened"],
+    explain: "<strong>is listening</strong> — 'right now' = đang xảy ra tại thời điểm nói → <strong>Present Continuous</strong>: S + am/is/are + V-ing"
+  },
+  {
+    signal: "I ___ this book since last Monday — I'm still not finished!",
+    hint: "'Since' + mốc thời gian bắt đầu, quá trình vẫn đang tiếp diễn → thì nào?",
+    answer: "have been reading",
+    options: ["read", "have read", "have been reading", "am reading"],
+    explain: "<strong>have been reading</strong> — 'since last Monday' + 'I'm still not finished' → nhấn mạnh quá trình đang tiếp diễn đến HT → <strong>Present Perfect Continuous</strong>. 'Have read' nhấn mạnh kết quả hoàn thành, không phù hợp vì chưa xong."
+  },
+  {
+    signal: "By the time she arrived, I ___ dinner.",
+    hint: "Hai hành động QK — cái nào xảy ra TRƯỚC?",
+    answer: "had finished",
+    options: ["finished", "was finishing", "had finished", "have finished"],
+    explain: "<strong>had finished</strong> — 'By the time + QKĐ' → hành động xảy ra TRƯỚC phải dùng <strong>Past Perfect</strong>: had + V3"
+  },
+  {
+    signal: "Look at those dark clouds! It ___ rain.",
+    hint: "Có bằng chứng nhìn thấy được trước mắt?",
+    answer: "is going to",
+    options: ["will", "is going to", "is raining", "would"],
+    explain: "<strong>is going to</strong> — Có bằng chứng trực quan (dark clouds) → dùng <strong>be going to</strong>, không phải 'will' (will = không có bằng chứng, chỉ dự đoán)"
+  },
+  {
+    signal: "I ___ (study) when my phone rang at 9 PM last night.",
+    hint: "Hành động nào là 'nền' đang diễn ra? Hành động nào 'chen vào'?",
+    answer: "was studying",
+    options: ["studied", "was studying", "had studied", "have studied"],
+    explain: "<strong>was studying</strong> — 'was studying' = hành động nền (QKTD) đang diễn ra / 'rang' = QKĐ chen vào bất ngờ. Dấu hiệu: <strong>at 9 PM last night</strong> xác định thời điểm đang diễn ra. Công thức: <strong>while + Past Continuous... when + Past Simple</strong>"
+  },
+  {
+    signal: "I ___ you when I ___ — điền vào cả hai chỗ trống (okay?)",
+    hint: "Mệnh đề chính → thì gì? Mệnh đề phụ sau 'when' trong câu Tương Lai → thì gì?",
+    answer: "will call / arrive",
+    options: ["will call / arrive", "will call / will arrive", "call / arrive", "call / will arrive"],
+    explain: "<strong>'I will call you when I arrive'</strong> — Mệnh đề chính dùng <strong>will + V</strong> (will call). Mệnh đề phụ sau <em>when/after/before/until/as soon as</em> trong câu TL → dùng <strong>Present Simple</strong> (arrive), KHÔNG phải will arrive!"
+  },
+  {
+    signal: "She ___ never ___ sushi before last night.",
+    hint: "Trải nghiệm xảy ra TRƯỚC một thời điểm trong quá khứ?",
+    answer: "had never eaten",
+    options: ["has never eaten", "had never eaten", "never ate", "never has eaten"],
+    explain: "<strong>had never eaten</strong> — 'before last night' = mốc QK. Kinh nghiệm xảy ra TRƯỚC mốc QK → <strong>Past Perfect</strong>: had + V3. Nếu không có mốc QK → dùng Present Perfect."
+  },
+  {
+    signal: "The train ___ at 9:30 every morning.",
+    hint: "Lịch cố định, lặp lại mỗi ngày → thì nào?",
+    answer: "leaves",
+    options: ["leave", "leaves", "is leaving", "will leave"],
+    explain: "<strong>leaves</strong> — Lịch trình cố định (timetable) dùng <strong>Present Simple</strong>. Động từ chia theo chủ ngữ 'The train' (3rd person singular) → leaves"
+  },
+  {
+    signal: "By next December, she ___ here for 10 years.",
+    hint: "Sẽ HOÀN THÀNH trước một mốc thời gian trong tương lai?",
+    answer: "will have worked",
+    options: ["will work", "will be working", "will have worked", "has worked"],
+    explain: "<strong>will have worked</strong> — 'By next December' + thời gian cụ thể → <strong>Future Perfect</strong>: will have + V3. Nhấn mạnh hành động sẽ hoàn thành trước mốc TL đó."
+  },
+  {
+    signal: "Hello, I ___ (wonder) if you could help me with something — do you have a moment?",
+    hint: "Cách nhờ vả lịch sự trong tiếng Anh — dùng thì nào để giảm áp đặt?",
+    answer: "was wondering",
+    options: ["wonder", "am wondering", "was wondering", "wondered"],
+    explain: "<strong>was wondering</strong> — Đây là <em>Polite Past</em>! Dùng <strong>Past Continuous</strong> để đặt yêu cầu ở HT một cách lịch sự. 'Am wondering' có thể đúng về nghĩa nhưng kém lịch sự hơn. 'I was wondering if...' = cực kỳ tinh tế và chuyên nghiệp trong tiếng Anh thực tế."
+  },
+  {
+    signal: "He ___ (always/lose) his keys and making us late — it's so annoying!",
+    hint: "Cảm xúc bực bội + thói quen xấu lặp đi lặp lại → cấu trúc phàn nàn?",
+    answer: "is always losing",
+    options: ["always loses", "is always losing", "always lost", "has always lost"],
+    explain: "<strong>is always losing</strong> — <strong>always + Present Continuous</strong> = phàn nàn về thói quen gây khó chịu (annoying habit). Cảm xúc 'it's so annoying!' là dấu hiệu then chốt. 'Always loses' = thói quen trung lập, không mang cảm xúc phàn nàn."
+  },
+  {
+    signal: "If I ___ harder, I would have passed the exam.",
+    hint: "Câu điều kiện loại 3 — hối tiếc về quá khứ?",
+    answer: "had studied",
+    options: ["studied", "had studied", "would study", "study"],
+    explain: "<strong>had studied</strong> — Điều kiện loại 3: <strong>If + had + V3</strong> → would have + V3. Diễn đạt điều không thực trong QK (hối tiếc). Ngược lại với loại 2: If + V2 → would + V (giả định HT/TL)."
+  }
+];
+
+let current = 0;
+let score = 0;
+let answered = new Array(questions.length).fill(null);
+
+function renderQ() {
+  const q = questions[current];
+  document.getElementById('quizSignal').textContent = q.signal;
+  document.getElementById('quizHint').textContent = q.hint;
+  document.getElementById('progressBadge').textContent = `Câu ${current + 1}/${questions.length}`;
+  document.getElementById('scoreBadge').textContent = `Điểm: ${score}/${questions.filter((_, i) => answered[i] !== null).length}`;
+
+  const card = document.getElementById('quizCard');
+  card.className = 'quiz-card';
+  if (answered[current] !== null) {
+    card.classList.add(answered[current] ? 'correct' : 'wrong');
+  }
+
+  const opts = document.getElementById('quizOptions');
+  opts.innerHTML = '';
+  q.options.forEach(opt => {
+    const btn = document.createElement('button');
+    btn.className = 'quiz-opt';
+    btn.textContent = opt;
+    const isAnswer = opt === q.answer;
+
+    if (answered[current] !== null) {
+      if (isAnswer) btn.classList.add('reveal-correct');
+      else if (answered[current] === false && opt === answered[current + '_chosen']) btn.classList.add('wrong');
+      btn.disabled = true;
+    }
+    btn.onclick = () => selectAnswer(opt, isAnswer, btn);
+    opts.appendChild(btn);
+  });
+
+  const explain = document.getElementById('quizExplain');
+  explain.className = 'quiz-explain' + (answered[current] !== null ? ' show' : '');
+  explain.innerHTML = answered[current] !== null ? `💡 ${q.explain}` : '';
+
+  document.getElementById('prevBtn').disabled = current === 0;
+  document.getElementById('nextBtn').disabled = current === questions.length - 1 || answered[current] === null;
+}
+
+function selectAnswer(chosen, isCorrect, btn) {
+  if (answered[current] !== null) return;
+  answered[current] = isCorrect;
+  answered[current + '_chosen'] = chosen;
+  if (isCorrect) score++;
+
+  btn.classList.add(isCorrect ? 'correct' : 'wrong');
+  document.querySelectorAll('.quiz-opt').forEach(b => {
+    if (b.textContent === questions[current].answer) b.classList.add('reveal-correct');
+    b.disabled = true;
+  });
+
+  const card = document.getElementById('quizCard');
+  card.classList.add(isCorrect ? 'correct' : 'wrong');
+
+  const explain = document.getElementById('quizExplain');
+  explain.innerHTML = `💡 ${questions[current].explain}`;
+  explain.classList.add('show');
+
+  document.getElementById('scoreBadge').textContent = `Điểm: ${score}/${answered.filter(a => a !== null).length}`;
+
+  if (current < questions.length - 1) {
+    document.getElementById('nextBtn').disabled = false;
+  } else {
+    showResult();
+  }
+}
+
+function nextQ() {
+  if (current < questions.length - 1) { current++; renderQ(); }
+}
+function prevQ() {
+  if (current > 0) { current--; renderQ(); }
+}
+
+function showResult() {
+  document.getElementById('quizContainer').style.display = 'none';
+  const result = document.getElementById('quizResult');
+  result.classList.add('show');
+  document.getElementById('resultScore').textContent = `${score}/${questions.length}`;
+  const msgs = [
+    [12, "🏆 Hoàn hảo! Bạn là Grammar Master thực thụ!"],
+    [10, "⭐ Xuất sắc! Nắm vững hầu hết các thì quan trọng!"],
+    [8, "👍 Khá tốt! Ôn lại phần bạn còn sai nhé."],
+    [5, "📚 Cần ôn thêm — đọc lại các phần trên và thử lại!"],
+    [0, "💪 Đừng nản! Đọc kỹ tài liệu rồi làm lại nhé!"]
+  ];
+  const msg = msgs.find(([min]) => score >= min) || msgs[msgs.length - 1];
+  document.getElementById('resultMsg').textContent = msg[1];
+  document.getElementById('restartBtn').style.display = 'inline-block';
+}
+
+function restartQuiz() {
+  current = 0; score = 0;
+  answered = new Array(questions.length).fill(null);
+  document.getElementById('quizContainer').style.display = 'block';
+  document.getElementById('quizResult').classList.remove('show');
+  document.getElementById('restartBtn').style.display = 'none';
+  renderQ();
+}
+
+// Init
+renderQ();
+
+// ── SMOOTH SCROLL ────────────────────────────────────────────────────────────
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const el = document.querySelector(a.getAttribute('href'));
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+});
+</script>
+
+</body>
+</html>
